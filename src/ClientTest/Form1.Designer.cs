@@ -32,6 +32,7 @@
             BtnRotateAnti = new Button();
             BtnStop1 = new Button();
             BtnRotateClock = new Button();
+            BtnPowerOff = new Button();
             SuspendLayout();
             // 
             // BtnPowerOn
@@ -74,11 +75,22 @@
             BtnRotateClock.UseVisualStyleBackColor = true;
             BtnRotateClock.Click += BtnRotateClock_Click;
             // 
+            // BtnPowerOff
+            // 
+            BtnPowerOff.Location = new Point(23, 57);
+            BtnPowerOff.Name = "BtnPowerOff";
+            BtnPowerOff.Size = new Size(75, 23);
+            BtnPowerOff.TabIndex = 4;
+            BtnPowerOff.Text = "Power Off";
+            BtnPowerOff.UseVisualStyleBackColor = true;
+            BtnPowerOff.Click += BtnPowerOff_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(BtnPowerOff);
             Controls.Add(BtnRotateClock);
             Controls.Add(BtnStop1);
             Controls.Add(BtnRotateAnti);
@@ -94,5 +106,6 @@
         private Button BtnRotateAnti;
         private Button BtnStop1;
         private Button BtnRotateClock;
+        private Button BtnPowerOff;
     }
 }
