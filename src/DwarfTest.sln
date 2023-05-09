@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DwarfIIApi", "DwarfIIApi\DwarfIIApi.csproj", "{7CA230B1-A213-42A0-AF27-05EA31ADB31E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientTest", "ClientTest\ClientTest.csproj", "{2929820A-0A1E-4FBB-AB4E-18F3CC82D8D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{E545CF4C-F810-429D-A42B-BB6CDF5F7CB6}"
+	ProjectSection(SolutionItems) = preProject
+		DWARF_II_API_V1.0-704a098a-9c08-4add-9c12-120a92f3eec5.pdf = DWARF_II_API_V1.0-704a098a-9c08-4add-9c12-120a92f3eec5.pdf
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DwarfApp", "DwarfApp\DwarfApp.csproj", "{6A047B44-44A8-4942-9861-48DE530BD43E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CA230B1-A213-42A0-AF27-05EA31ADB31E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CA230B1-A213-42A0-AF27-05EA31ADB31E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CA230B1-A213-42A0-AF27-05EA31ADB31E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CA230B1-A213-42A0-AF27-05EA31ADB31E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2929820A-0A1E-4FBB-AB4E-18F3CC82D8D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2929820A-0A1E-4FBB-AB4E-18F3CC82D8D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2929820A-0A1E-4FBB-AB4E-18F3CC82D8D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2929820A-0A1E-4FBB-AB4E-18F3CC82D8D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A047B44-44A8-4942-9861-48DE530BD43E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A047B44-44A8-4942-9861-48DE530BD43E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A047B44-44A8-4942-9861-48DE530BD43E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A047B44-44A8-4942-9861-48DE530BD43E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81D7BDB7-A818-43EB-ABA5-2E9A90FE5425}
+	EndGlobalSection
+EndGlobal
