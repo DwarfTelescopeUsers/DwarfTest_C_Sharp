@@ -29,8 +29,11 @@ namespace ClientTest
 
         // photo
         private const int takePhotoCmd = 10006;
-        private const int photoSingleShot = 0;
-        private const int photoContinuous = 1;
+        public enum ShotMode
+        {
+            Single = 0,
+            Continuous = 1
+        }
 
         // video
         private const int startRecordingCmd = 10007;
@@ -215,11 +218,42 @@ namespace ClientTest
         // ===============
         //TODO: write these mwthods
 
+        public static async Task TakePhoto(CameraId cameraId)
+        {
+            D2Message d2Message = new()
+            {
+                Interface = takePhotoCmd,
+                CamId = (int)cameraId,
+                Mode = 0,
+                Count = 1,
+                Name = $"DwarfTest-Photo-{DateTime.Now}"
+            };
 
+            D2Message? response = await SendMessage(d2Message);
+        }
 
+        public static async Task StartRecording(CameraId cameraId)
+        {
+            D2Message d2Message = new()
+            {
+                Interface = startRecordingCmd,
+                CamId = (int)cameraId,
+                Name = $"DwarfTest-Video-{DateTime.Now}"
+            };
 
+            D2Message? response = await SendMessage(d2Message);
+        }
 
+        public static async Task StopRecording(CameraId cameraId)
+        {
+            D2Message d2Message = new()
+            {
+                Interface = stopRecordingCmd,
+                CamId = (int)cameraId
+            };
 
+            D2Message? response = await SendMessage(d2Message);
+        }
 
 
 

@@ -15,6 +15,8 @@
         /// 
         public int? Code { get; set; }
 
+        public int? Count { get; set; }
+
         /// <summary>
         /// 10006:
         /// 0:Single shot 1:Continuous Capture
