@@ -44,7 +44,7 @@ namespace ClientTest
         private const int stopTimelapseCmd = 10019;
 
         // ===============
-        // 3.3 ISP settings
+        // 3.3 Adjust ISP parameters
         // ===============
 
         // brightness
@@ -71,17 +71,17 @@ namespace ClientTest
         private const int setGainValueCmd = 10005;
 
         // autofocus
-        private const int autofocusCmd = 10211;
+        private const int startAutofocusCmd = 10211;
         private const int autofocusGlobal = 0;
         private const int autofocusArea = 1;
 
-        // whitebalance
-        private const int setWBModeCmd = 10212;
-        private const int setWBScenceCmd = 10213;
-        private const int setWBColorCmd = 10214;
+        // white balance
+        private const int setWhiteBalanceModeCmd = 10212;
+        private const int setWhiteBalanceSceneCmd = 10213;
+        private const int setWhiteBalanceColorTemperatureCmd = 10214;
 
         // IR
-        private const int setIRCmd = 10203;
+        private const int setIRCutCmd = 10203;
         private const int IRCut = 0;
         private const int IRPass = 3;
 
@@ -255,9 +255,164 @@ namespace ClientTest
             D2Message? response = await SendMessage(d2Message);
         }
 
+        // ===============
+        // 3.3 Adjust ISP parameters
+        // ===============
 
+        public static async Task SetBrightnessValue()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = setBrightnessValueCmd,
+                CamId = 0,
+                Value = 50
+            };
+            D2Message? response = await SendMessage(d2Message);
+        }
 
+        public static async Task SetContrastValue()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = setContrastValueCmd,
+                CamId = 0,
+                Value = 50
+            };
+            D2Message? response = await SendMessage(d2Message);
+        }
 
+        public static async Task SetSaturationValue()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = setSaturationValueCmd,
+                CamId = 0,
+                Value = 50
+            };
+            D2Message? response = await SendMessage(d2Message);
+        }
+        public static async Task SetHueValue()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = setHueValueCmd,
+                CamId = 0,
+                Value = 50
+            };
+            D2Message? response = await SendMessage(d2Message);
+        }
+
+        public static async Task SetSharpnessValue()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = setSharpnessValueCmd,
+                CamId = 0,
+                Value = 50
+            };
+            D2Message? response = await SendMessage(d2Message);
+        }
+
+        public static async Task SetExposureMode()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = setExposureModeCmd,
+                CamId = 0,
+                Mode = 0
+            };
+            D2Message? response = await SendMessage(d2Message);
+        }
+
+        public static async Task SetExposureValue()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = setExposureValueCmd,
+                CamId = 0,
+                Value = 50
+            };
+            D2Message? response = await SendMessage(d2Message);
+        }
+
+        public static async Task SetGainMode()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = setGainModeCmd,
+                CamId = 0,
+                Mode = 0
+            };
+            D2Message? response = await SendMessage(d2Message);
+        }
+
+        public static async Task SetGainValue()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = setGainValueCmd,
+                CamId = 0,
+                Value = 50
+            };
+            D2Message? response = await SendMessage(d2Message);
+        }
+
+        public static async Task StartAutoFocus()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = startAutofocusCmd,
+                CamId = 0,
+                Mode = 0,
+                CenterX = 0,
+                CenterY = 0
+            };
+            D2Message? response = await SendMessage(d2Message);
+        }
+
+        public static async Task SetWhiteBalanceMode()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = setWhiteBalanceModeCmd,
+                CamId = 0,
+                Mode = 0
+            };
+            D2Message? response = await SendMessage(d2Message);
+        }
+
+        public static async Task SetWhiteBalanceScene()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = setWhiteBalanceSceneCmd,
+                CamId = 0,
+                Mode = 0
+            };
+            D2Message? response = await SendMessage(d2Message);
+        }
+
+        public static async Task SetWhiteBalanceColor()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = setWhiteBalanceColorTemperatureCmd,
+                CamId = 0,
+                Value = 50
+            };
+            D2Message? response = await SendMessage(d2Message);
+        }
+
+        public static async Task SetIRCut()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = setIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            D2Message? response = await SendMessage(d2Message);
+        }
 
 
 
