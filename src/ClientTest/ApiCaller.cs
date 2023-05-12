@@ -10,173 +10,49 @@ namespace ClientTest
 {
     internal class ApiCaller
     {
-        // ===============
-        // 3.1 image transmission
-        // ===============
-
-        // camera
-        private const int turnOnCameraCmd = 10000;
-        private const int turnOffCameraCmd = 10017;
         public enum CameraId
         {
             Telephoto = 0,
             WideAngle = 1
         }
 
-        // ===============
-        // 3.2 photo and video
-        // ===============
-
-        // photo
-        private const int takePhotoCmd = 10006;
         public enum ShotMode
         {
             Single = 0,
             Continuous = 1
         }
 
-        // video
-        private const int startRecordingCmd = 10007;
-        private const int stopRecordingCmd = 10009;
-
-        // timelapse photos
-        private const int startTimelapseCmd = 10018;
-        private const int stopTimelapseCmd = 10019;
-
-        // ===============
-        // 3.3 Adjust ISP parameters
-        // ===============
-
-        // brightness
-        private const int setBrightnessValueCmd = 10204;
-
-        // contrast
-        private const int setContrastValueCmd = 10205;
-
-        // saturation
-        private const int setSaturationValueCmd = 10206;
-
-        // hue
-        private const int setHueValueCmd = 10207;
-
-        // sharpness
-        private const int setSharpnessValueCmd = 10208;
-
-        // exposure
-        private const int setExposureModeCmd = 10001;
-        private const int setExposureValueCmd = 10003;
-
-        // gain
-        private const int setGainModeCmd = 10004;
-        private const int setGainValueCmd = 10005;
-
-        // autofocus
-        private const int startAutofocusCmd = 10211;
         private const int autofocusGlobal = 0;
         private const int autofocusArea = 1;
 
-        // white balance
-        private const int setWhiteBalanceModeCmd = 10212;
-        private const int setWhiteBalanceSceneCmd = 10213;
-        private const int setWhiteBalanceColorTemperatureCmd = 10214;
-
-        // IR
-        private const int setIRCutCmd = 10203;
         private const int IRCut = 0;
         private const int IRPass = 3;
 
-        // ===============
-        // 3.4 status
-        // ===============
-
-        // telephoto
-        private const int statusTelephotoCmd = 10215;
-        private const int statusIRTelephotoCmd = 10216;
-        private const int statusWorkingStateTelephotoCmd = 10022;
-
-        // wideangle
-        private const int statusWideangleCmd = 10217;
-
-        // ===============
-        // 4.1 Astro
-        // ===============
-
         // goto
-        private const int setupGotoCmd = 11205;
-        private const int startGotoCmd = 11203;
-        private const int Mercury = 0;
-        private const int Venus = 1;
-        private const int Mars = 2;
-        private const int Jupiter = 3;
-        private const int Saturn = 4;
-        private const int Uranus = 5;
-        private const int Neptune = 6;
-        private const int Moon = 7;
+        public enum Planets
+        {
+            Mercury = 0,
+            Venus = 1,
+            Mars = 2,
+            Jupiter = 3,
+            Saturn = 4,
+            Uranus = 5,
+            Neptune = 6,
+            Moon = 7
+        }
+
 
         // RAW astro photo
-        private const int takeAstroPhotoCmd = 10011;
-        private const int stopAstroPhotoCmd = 10015;
         private const int binning1x1 = 0;
         private const int binning2x2 = 1;
         private const int fileFits = 0;
         private const int fileTiff = 1;
 
         // raw preview
-        private const int setRawPreviewCmd = 10020;
         private const int rawPreviewContinousSuperimpose = 0;
         private const int rawPreviewSingle15 = 1;
         private const int rawPreviewSingleComposite = 2;
 
-        // astro dark frames
-        private const int takeAstroDarkFramesCmd = 10026;
-
-        // query shot field
-        private const int queryShotFieldCmd = 10026;
-
-        // ===============
-        // 4.2 tracking
-        // ===============
-
-        private const int traceInitCmd = 11200;
-        private const int startTrackingCmd = 11201;
-        private const int stopTrackingCmd = 11202;
-
-        // ===============
-        // 4.3 panoromic
-        // ===============
-
-        private const int startPanoCmd = 10103;
-        private const int stopPanoCmd = 10106;
-
-        // ===============
-        // 5 motion control
-        // ===============
-
-        private const int startMotionCmd = 10100;
-        private const int stopMotionCmd = 10101;
-        private const int setSpeedCmd = 10107;
-        private const int setDirectionCmd = 10108;
-        private const int setSubdivideCmd = 10109;
-
-        // ===============
-        // 7.1 system status
-        // ===============
-
-        private const int systemStatusCmd = 11407;
-
-        // ===============
-        // 7.2 microsd card status
-        // ===============
-
-        private const int microsdStatusCmd = 11405;
-        private const int microsdAvailableCmd = 11409;
-
-        // ===============
-        // 7.4 dwarf status
-        // ===============
-
-        private const int dwarfSoftwareVersionCmd = 11410;
-        private const int dwarfChargingStatusCmd = 11011;
 
         // "wss://localhost:7122/ws"
         private static readonly string uri = "ws://192.168.1.162:9900";
@@ -195,7 +71,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = turnOnCameraCmd,
+                Interface = CommandOpcodes.TurnOnCameraCmd,
                 CamId = (int)cameraId
             };
 
@@ -206,7 +82,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = turnOffCameraCmd,
+                Interface = CommandOpcodes.TurnOffCameraCmd,
                 CamId = (int)cameraId
             };
 
@@ -222,7 +98,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = takePhotoCmd,
+                Interface = CommandOpcodes.TakePhotoCmd,
                 CamId = (int)cameraId,
                 Mode = 0,
                 Count = 1,
@@ -236,7 +112,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = startRecordingCmd,
+                Interface = CommandOpcodes.StartRecordingCmd,
                 CamId = (int)cameraId,
                 Name = $"DwarfTest-Video-{DateTime.Now}"
             };
@@ -248,7 +124,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = stopRecordingCmd,
+                Interface = CommandOpcodes.StopRecordingCmd,
                 CamId = (int)cameraId
             };
 
@@ -263,7 +139,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = setBrightnessValueCmd,
+                Interface = CommandOpcodes.SetBrightnessValueCmd,
                 CamId = 0,
                 Value = 50
             };
@@ -274,7 +150,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = setContrastValueCmd,
+                Interface = CommandOpcodes.SetContrastValueCmd,
                 CamId = 0,
                 Value = 50
             };
@@ -285,7 +161,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = setSaturationValueCmd,
+                Interface = CommandOpcodes.SetSaturationValueCmd,
                 CamId = 0,
                 Value = 50
             };
@@ -295,7 +171,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = setHueValueCmd,
+                Interface = CommandOpcodes.SetHueValueCmd,
                 CamId = 0,
                 Value = 50
             };
@@ -306,7 +182,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = setSharpnessValueCmd,
+                Interface = CommandOpcodes.SetSharpnessValueCmd,
                 CamId = 0,
                 Value = 50
             };
@@ -317,7 +193,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = setExposureModeCmd,
+                Interface = CommandOpcodes.SetExposureModeCmd,
                 CamId = 0,
                 Mode = 0
             };
@@ -328,7 +204,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = setExposureValueCmd,
+                Interface = CommandOpcodes.SetExposureValueCmd,
                 CamId = 0,
                 Value = 50
             };
@@ -339,7 +215,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = setGainModeCmd,
+                Interface = CommandOpcodes.SetGainModeCmd,
                 CamId = 0,
                 Mode = 0
             };
@@ -350,7 +226,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = setGainValueCmd,
+                Interface = CommandOpcodes.SetGainValueCmd,
                 CamId = 0,
                 Value = 50
             };
@@ -361,7 +237,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = startAutofocusCmd,
+                Interface = CommandOpcodes.StartAutofocusCmd,
                 CamId = 0,
                 Mode = 0,
                 CenterX = 0,
@@ -374,7 +250,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = setWhiteBalanceModeCmd,
+                Interface = CommandOpcodes.SetWhiteBalanceModeCmd,
                 CamId = 0,
                 Mode = 0
             };
@@ -385,7 +261,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = setWhiteBalanceSceneCmd,
+                Interface = CommandOpcodes.SetWhiteBalanceSceneCmd,
                 CamId = 0,
                 Mode = 0
             };
@@ -396,7 +272,7 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = setWhiteBalanceColorTemperatureCmd,
+                Interface = CommandOpcodes.SetWhiteBalanceColorTemperatureCmd,
                 CamId = 0,
                 Value = 50
             };
@@ -407,17 +283,278 @@ namespace ClientTest
         {
             D2Message d2Message = new()
             {
-                Interface = setIRCutCmd,
+                Interface = CommandOpcodes.SetIRCutCmd,
                 CamId = 0,
                 Value = 50
             };
             D2Message? response = await SendMessage(d2Message);
         }
 
+        // -----------------
+        public static async Task SendIRTelephotoStatusCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
 
+        public static async Task SendWorkingStateTelephotoCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
 
+        public static async Task SendWideangleCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
 
+        public static async Task SendSetupGotoCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
 
+        public static async Task SendStartGotoCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendTakeAstroPhotoCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendStopAstroPhotoCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendTakeAstroDarkFramesCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendQueryShotFieldCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendTraceInitCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendStartTrackingCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendStopTrackingCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendStartPanoCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendStopPanoCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendStartMotionCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendStopMotionCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendSetSpeedCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendSetDirectionCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendSetSubdivideCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendSystemStatusCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendMicrosdStatusCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendMicrosdAvailableCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendDwarfSoftwareVersionCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+
+        public static async Task SendDwarfChargingStatusCmd()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = CommandOpcodes.SetIRCutCmd,
+                CamId = 0,
+                Value = 50
+            };
+            await SendMessage(d2Message);
+        }
+       //---------------------
         public static async Task RotateAnticlockwise()
         {
             D2Message d2Message = new()
