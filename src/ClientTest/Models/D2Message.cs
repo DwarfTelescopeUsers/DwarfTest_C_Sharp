@@ -1,4 +1,6 @@
-﻿public class D2Message
+﻿using System.Text.Json.Serialization;
+
+public class D2Message
 {
     public int Interface { get; set; }
     public int? AwbMode { get; set; }
@@ -45,6 +47,9 @@
     public string? Target { get; set; }
     public int? TrackState { get; set; }
     public int? Value { get; set; }
+
+    [JsonPropertyName("value")]
+    public double? ValueDouble { get; set; }
     public int? H { get; internal set; }
     public int? W { get; internal set; }
     public int? Y { get; internal set; }

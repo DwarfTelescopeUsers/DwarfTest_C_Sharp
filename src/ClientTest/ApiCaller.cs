@@ -22,6 +22,18 @@ namespace ClientTest
             Continuous = 1
         }
 
+        public enum Binning
+        {
+            Binning1x1 = 0,
+            Binning2x2 = 1
+        }
+
+        public enum AutoManual
+        {
+            Auto = 0,
+            Manual = 1
+        }
+
         private const int autofocusGlobal = 0;
         private const int autofocusArea = 1;
 
@@ -42,8 +54,6 @@ namespace ClientTest
         }
 
         // RAW astro photo
-        private const int binning1x1 = 0;
-        private const int binning2x2 = 1;
         private const int fileFits = 0;
         private const int fileTiff = 1;
 
@@ -66,19 +76,20 @@ namespace ClientTest
         // ===============
         // 3.1 image transmission
         // ===============
-        public static async Task TurnOnCamera(CameraId cameraId)
+        public static async Task<D2Message?> TurnOnCamera(CameraId cameraId, Binning binning)
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.TurnOnCameraCmd,
                 CamId = (int)cameraId,
-                Binning = 0
+                Binning = (int)binning
             };
 
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task TurnOffCamera(CameraId cameraId)
+        public static async Task<D2Message?> TurnOffCamera(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
@@ -86,9 +97,10 @@ namespace ClientTest
                 CamId = (int)cameraId
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task SetPreviewImageQuality(CameraId cameraId, ShotMode shotMode)
+        public static async Task<D2Message?> SetPreviewImageQuality(CameraId cameraId, ShotMode shotMode)
         {
             D2Message d2Message = new()
             {
@@ -97,28 +109,33 @@ namespace ClientTest
                 Mode = (int)shotMode
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
         // ===============
         // 3.2 photo and video
         // ===============
-        //TODO: write these mwthods
-
-        public static async Task TakePhoto(CameraId cameraId)
+        public static async Task<D2Message?> TakePhoto(CameraId cameraId, ShotMode shotMode, int count)
         {
+            if (count < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(count), "Count must be greater than 0");
+            }
+
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.TakePhotoCmd,
                 CamId = (int)cameraId,
-                Mode = 0,
-                Count = 1,
+                Mode = (int)shotMode,
+                Count = count,
                 Name = $"DwarfTest-Photo-{DateTime.Now}"
             };
 
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task StartRecording(CameraId cameraId)
+        public static async Task<D2Message?> StartRecording(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
@@ -128,9 +145,10 @@ namespace ClientTest
             };
 
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task StopRecording(CameraId cameraId)
+        public static async Task<D2Message?> StopRecording(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
@@ -138,22 +156,32 @@ namespace ClientTest
                 CamId = (int)cameraId
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task StartTimeLapsePhotography(CameraId cameraId)
+        public static async Task<D2Message?> StartTimeLapsePhotography(CameraId cameraId, int interval, int outTime)
         {
+            if(interval is < 1 or > 60)
+            {
+                throw new ArgumentOutOfRangeException(nameof(interval), "Interval must be between 1 and 60 seconds");
+            }
+            if (outTime < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(outTime), "OutTime must be greater than 0 seconds");
+            }
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.StartTimeLapsePhotographyCmd,
                 CamId = (int)cameraId,
-                Interval = 1,
-                OutTime = 1,
+                Interval = interval,
+                OutTime = outTime,
                 Name = $"DwarfTest-TimeLapse-{DateTime.Now}"
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task StopTimeLapsePhotography(CameraId cameraId)
+        public static async Task<D2Message?> StopTimeLapsePhotography(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
@@ -161,111 +189,182 @@ namespace ClientTest
                 CamId = (int)cameraId
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
         // ===============
         // 3.3 Adjust ISP parameters
         // ===============
 
-        public static async Task SetBrightnessValue(CameraId cameraId)
+        public static async Task<D2Message?> SetBrightnessValue(CameraId cameraId, int value)
         {
+            if (cameraId == CameraId.Telephoto && value is < 0 or > 255)
+            {
+                throw new ArgumentOutOfRangeException(nameof(value), "Telephoto Value must be between 0 and 255");
+            }
+            if (cameraId == CameraId.WideAngle && value is < -64 or > 64)
+            {
+                throw new ArgumentOutOfRangeException(nameof(value), "WideAngle Value must be between -64 and 64");
+            }
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.SetBrightnessValueCmd,
                 CamId = (int)cameraId,
-                Value = 50
+                Value = value
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task SetContrastValue(CameraId cameraId)
+        public static async Task<D2Message?> SetContrastValue(CameraId cameraId, int value)
         {
+            if (cameraId == CameraId.Telephoto && value is < 0 or > 255)
+            {
+                throw new ArgumentOutOfRangeException(nameof(value), "Telephoto Value must be between 0 and 255");
+            }
+            if (cameraId == CameraId.WideAngle && value is < 0 or > 95)
+            {
+                throw new ArgumentOutOfRangeException(nameof(value), "WideAngle Value must be between 0 and 95");
+            }
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.SetContrastValueCmd,
                 CamId = (int)cameraId,
-                Value = 50
+                Value = value
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task SetSaturationValue(CameraId cameraId)
+        public static async Task<D2Message?> SetSaturationValue(CameraId cameraId, int value)
         {
+            if (cameraId == CameraId.Telephoto && value is < 0 or > 255)
+            {
+                throw new ArgumentOutOfRangeException(nameof(value), "Telephoto Value must be between 0 and 255");
+            }
+            if (cameraId == CameraId.WideAngle && value is < 0 or > 100)
+            {
+                throw new ArgumentOutOfRangeException(nameof(value), "WideAngle Value must be between 0 and 100");
+            }
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.SetSaturationValueCmd,
                 CamId = (int)cameraId,
-                Value = 50
+                Value = value
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
-        public static async Task SetHueValue(CameraId cameraId)
+        public static async Task<D2Message?> SetHueValue(CameraId cameraId, int value)
         {
+            if (cameraId == CameraId.Telephoto && value is < 0 or > 255)
+            {
+                throw new ArgumentOutOfRangeException(nameof(value), "Telephoto Value must be between 0 and 255");
+            }
+            if (cameraId == CameraId.WideAngle && value is < -2000 or > 2000)
+            {
+                throw new ArgumentOutOfRangeException(nameof(value), "WideAngle Value must be between -2000 and 2000");
+            }
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.SetHueValueCmd,
                 CamId = (int)cameraId,
-                Value = 50
+                Value = value
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task SetSharpnessValue(CameraId cameraId)
+        public static async Task<D2Message?> SetSharpnessValue(CameraId cameraId, int value)
         {
+            if (cameraId == CameraId.Telephoto && value is < 0 or > 100)
+            {
+                throw new ArgumentOutOfRangeException(nameof(value), "Telephoto Value must be between 0 and 100");
+            }
+            if (cameraId == CameraId.WideAngle && value is < 1 or > 7)
+            {
+                throw new ArgumentOutOfRangeException(nameof(value), "WideAngle Value must be between 1 and 7");
+            }
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.SetSharpnessValueCmd,
                 CamId = (int)cameraId,
-                Value = 50
+                Value = value
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task SetExposureMode(CameraId cameraId)
+        public static async Task<D2Message?> SetExposureMode(CameraId cameraId, AutoManual autoManual)
         {
+            int mode = (int)autoManual;
+            if(cameraId == CameraId.WideAngle && autoManual == AutoManual.Auto)
+            {
+                mode = 3;
+            }
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.SetExposureModeCmd,
                 CamId = (int)cameraId,
-                Mode = 0
+                Mode = mode
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task SetExposureValue(CameraId cameraId)
+        public static async Task<D2Message?> SetExposureValue(CameraId cameraId, double value)
         {
+            if (cameraId == CameraId.Telephoto && value is < 0.00 or > 15.00)
+            {
+                throw new ArgumentOutOfRangeException(nameof(value), "Telephoto Value must be between 0.0000 and 15.0000");
+            }
+            if (cameraId == CameraId.WideAngle && value is < 0.0003 or > 1.0000)
+            {
+                throw new ArgumentOutOfRangeException(nameof(value), "WideAngle Value must be between 0.0003 and 1.0000");
+            }
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.SetExposureValueCmd,
                 CamId = (int)cameraId,
-                Value = 50
+                ValueDouble = value
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task SetGainMode(CameraId cameraId)
+        public static async Task<D2Message?> SetGainMode(CameraId cameraId, AutoManual autoManual)
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.SetGainModeCmd,
                 CamId = (int)cameraId,
-                Mode = 0
+                Mode = (int)autoManual
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task SetGainValue(CameraId cameraId)
+        public static async Task<D2Message?> SetGainValue(CameraId cameraId, int value)
         {
+            if (cameraId == CameraId.Telephoto && value is < 0 or > 240)
+            {
+                throw new ArgumentOutOfRangeException(nameof(value), "Telephoto Value must be between 0 and 240");
+            }
+            if (cameraId == CameraId.WideAngle && value is < 64 or > 8000)
+            {
+                throw new ArgumentOutOfRangeException(nameof(value), "WideAngle Value must be between 64 and 8000");
+            }
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.SetGainValueCmd,
                 CamId = (int)cameraId,
-                Value = 50
+                Value = value
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task StartAutoFocus(CameraId cameraId)
+        public static async Task<D2Message?> StartAutoFocus(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
@@ -276,9 +375,10 @@ namespace ClientTest
                 CenterY = 0
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task SetWhiteBalanceMode(CameraId cameraId)
+        public static async Task<D2Message?> SetWhiteBalanceMode(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
@@ -287,9 +387,10 @@ namespace ClientTest
                 Mode = 0
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task SetWhiteBalanceScene(CameraId cameraId)
+        public static async Task<D2Message?> SetWhiteBalanceScene(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
@@ -298,9 +399,10 @@ namespace ClientTest
                 Mode = 0
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task SetWhiteBalanceColor(CameraId cameraId)
+        public static async Task<D2Message?> SetWhiteBalanceColor(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
@@ -309,9 +411,10 @@ namespace ClientTest
                 Value = 50
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task SetIRCut(CameraId cameraId)
+        public static async Task<D2Message?> SetIRCut(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
@@ -320,22 +423,24 @@ namespace ClientTest
                 Value = 50
             };
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
         // ===============
         // 3.4 Gets DWARF running status and parameters
         // ===============
-        public static async Task GetTelephotoIspParameters(CameraId cameraId)
+        public static async Task<D2Message?> GetTelephotoIspParameters(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.GetTelephotoIspParametersCmd,
                 CamId = (int)cameraId
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task GetTelephotoIrCutState(CameraId cameraId)
+        public static async Task<D2Message?> GetTelephotoIrCutState(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
@@ -343,20 +448,22 @@ namespace ClientTest
                 CamId = (int)cameraId,
                 Value = 50
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task GetTelephotoWorkingState(CameraId cameraId)
+        public static async Task<D2Message?> GetTelephotoWorkingState(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.GetTelephotoIspParametersCmd,
                 CamId = (int)cameraId
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task GetWideangleIspParameter(CameraId cameraId)
+        public static async Task<D2Message?> GetWideangleIspParameter(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
@@ -364,7 +471,8 @@ namespace ClientTest
                 CamId = (int)cameraId,
                 Value = 50
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
 
@@ -374,7 +482,7 @@ namespace ClientTest
         // ===============
         // 4.1 Astronomical function
         // ===============
-        public static async Task Correction(CameraId cameraId)
+        public static async Task<D2Message?> Correction(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
@@ -382,10 +490,11 @@ namespace ClientTest
                 CamId = (int)cameraId,
                 Value = 50
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task StartGoto(CameraId cameraId)
+        public static async Task<D2Message?> StartGoto(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
@@ -393,10 +502,11 @@ namespace ClientTest
                 CamId = (int)cameraId,
                 Value = 50
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task TakeRawPictures()
+        public static async Task<D2Message?> TakeRawPictures(Binning binning)
         {
             D2Message d2Message = new()
             {
@@ -407,13 +517,14 @@ namespace ClientTest
                 DEC = "+23°46'27.0",
                 Exp = 50,
                 Gain = 75,
-                Binning = 0,
+                Binning = (int)binning,
                 Count = 1,
                 Name = "name",
                 OverlayCount = 1,
                 Format = 0
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
         /*
@@ -437,13 +548,14 @@ camId	        int	        0
 stackedCount	int	        Number of RAW images stacked
 
          */
-        public static async Task StopTakingRawImages()
+        public static async Task<D2Message?> StopTakingRawImages()
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.StopTakingRawImagesCmd
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
         /*
          * 4.1.8 RAW image preview
@@ -452,7 +564,7 @@ RAW image preview：
          * http://192.168.88.1:8092/rawstream
          */
 
-        public static async Task SwitchRawPreviewSource(CameraId cameraId)
+        public static async Task<D2Message?> SwitchRawPreviewSource(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
@@ -460,10 +572,11 @@ RAW image preview：
                 CamId = (int)cameraId,
                 Source = 0
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task TakeAstroDarkFrames(CameraId cameraId)
+        public static async Task<D2Message?> TakeAstroDarkFrames(CameraId cameraId, Binning binning)
         {
             D2Message d2Message = new()
             {
@@ -471,36 +584,39 @@ RAW image preview：
                 CamId = (int)cameraId,
                 Count = 40,
                 Name = "name",
-                Binning = 0,
+                Binning = (int)binning,
                 DarkGain = 3,
                 DarkExp = 0
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task QueryShotField(CameraId cameraId)
+        public static async Task<D2Message?> QueryShotField(CameraId cameraId, Binning binning)
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.QueryShotFieldCmd,
                 CamId = (int)cameraId,
-                Binning = 0
+                Binning = (int)binning
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
         // ===============
         // 4.2 tracking
         // ===============
-        public static async Task TraceInitializationCmd(CameraId cameraId)
+        public static async Task<D2Message?> TraceInitializationCmd()
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.SetIRCutCmd
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task StartTracking(CameraId cameraId)
+        public static async Task<D2Message?> StartTracking(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
@@ -511,22 +627,24 @@ RAW image preview：
                 W = 50,
                 H = 50
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task StopTracking(CameraId cameraId)
+        public static async Task<D2Message?> StopTracking(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.StopTrackingCmd,
                 CamId = (int)cameraId
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
         // ===============
         // 4.3 panoromic
         // ===============
-        public static async Task StartPanorama(CameraId cameraId)
+        public static async Task<D2Message?> StartPanorama(CameraId cameraId)
         {
             D2Message d2Message = new()
             {
@@ -546,21 +664,23 @@ accelStep1(Motor 1 Acceleration steps)
 accelStep2(Motor 2 Acceleration steps)                 */
 
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task StopPanorama()
+        public static async Task<D2Message?> StopPanorama()
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.StopPanoramaCmd
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
         // ===============
         // 5 motion control
         // ===============
-        public static async Task StartMotion()
+        public static async Task<D2Message?> StartMotion()
         {
             D2Message d2Message = new()
             {
@@ -575,9 +695,10 @@ accelStep2(Motor 2 Acceleration steps)                 */
             };
 
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task StopMotion()
+        public static async Task<D2Message?> StopMotion()
         {
             D2Message d2Message = new()
             {
@@ -585,10 +706,11 @@ accelStep2(Motor 2 Acceleration steps)                 */
                 Id = 1,
                 DecelStep = 20
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task SetSpeed()
+        public static async Task<D2Message?> SetSpeed()
         {
             D2Message d2Message = new()
             {
@@ -598,10 +720,11 @@ accelStep2(Motor 2 Acceleration steps)                 */
                 AccelStep= 20,
                 Trend = 0
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task SetDirection()
+        public static async Task<D2Message?> SetDirection()
         {
             D2Message d2Message = new()
             {
@@ -609,10 +732,11 @@ accelStep2(Motor 2 Acceleration steps)                 */
                 Id = 1,
                 Direction = 0
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task SetSubdivide(CameraId cameraId)
+        public static async Task<D2Message?> SetSubdivide()
         {
             D2Message d2Message = new()
             {
@@ -620,7 +744,8 @@ accelStep2(Motor 2 Acceleration steps)                 */
                 Id = 1,
                 MStep = 1
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
         /*
 6. File preview and download API
@@ -637,126 +762,139 @@ Note:
 1.ftp only has download permission, no file transfer and delete permission, ftp can only access the sdcard directory
 2.sftp can access all directories and has the permission to upload and delete files. Ensure that you select /sdcard as the directory to upload and delete files through sftp.
          */
-        public static async Task SystemStatus()
+        public static async Task<D2Message?> SystemStatus()
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.SystemStatusCmd
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
         // ===============
         // 7.2 microsd card status
         // ===============
-        public static async Task MicrosdStatus()
+        public static async Task<D2Message?> MicrosdStatus()
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.MicrosdStatusCmd
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task CheckMicroSD()
+        public static async Task<D2Message?> CheckMicroSD()
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.CheckMicroSDCmd
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task GetDwarfSoftwareVersionNumberCmd()
+        public static async Task<D2Message?> GetDwarfSoftwareVersionNumberCmd()
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.GetDwarfSoftwareVersionNumberCmd
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task ChargingStatus()
+        public static async Task<D2Message?> ChargingStatus()
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.ChargingStatusCmd
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task MTPMode()
+        public static async Task<D2Message?> MTPMode()
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.MTPModeCmd
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task OTAUpgrade()
+        public static async Task<D2Message?> OTAUpgrade()
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.OTAUpgradeCmd
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task PowerAcquisition()
+        public static async Task<D2Message?> PowerAcquisition()
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.PowerAcquisitionCmd
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task ShutDown()
+        public static async Task<D2Message?> ShutDown()
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.ShutDownCmd
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task RGBControl()
+        public static async Task<D2Message?> RGBControl()
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.RGBControlCmd
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task TurnOffRGB()
+        public static async Task<D2Message?> TurnOffRGB()
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.TurnOffRGBCmd
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task TurnOnPowerIndicator()
+        public static async Task<D2Message?> TurnOnPowerIndicator()
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.TurnOnPowerIndicatorCmd
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task TurnOffPowerIndicator()
+        public static async Task<D2Message?> TurnOffPowerIndicator()
         {
             D2Message d2Message = new()
             {
                 Interface = CommandOpcodes.TurnOffPowerIndicatorCmd
             };
-            await SendMessage(d2Message);
+            D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task RotateAnticlockwise()
+        public static async Task<D2Message?> RotateAnticlockwise()
         {
             D2Message d2Message = new()
             {
@@ -771,9 +909,10 @@ Note:
             };
 
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task StopSpin()
+        public static async Task<D2Message?> StopSpin()
         {
             D2Message d2Message = new()
             {
@@ -783,9 +922,10 @@ Note:
             };
 
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
-        public static async Task RotateClockwise()
+        public static async Task<D2Message?> RotateClockwise()
         {
             D2Message d2Message = new()
             {
@@ -800,6 +940,7 @@ Note:
             };
 
             D2Message? response = await SendMessage(d2Message);
+            return response;
         }
 
 
@@ -822,7 +963,6 @@ Note:
                 WebSocketReceiveResult result = await webSocket.ReceiveAsync(new ArraySegment<byte>(receiveBuffer), CancellationToken.None);
                 string receivedMessage = Encoding.UTF8.GetString(receiveBuffer, 0, result.Count);
                 Debug.WriteLine($"Received message: {receivedMessage}");
-
                 var receiveD2Message = JsonSerializer.Deserialize<D2Message>(receivedMessage, jsoptions);
                 return receiveD2Message;
             }

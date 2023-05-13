@@ -11,12 +11,12 @@ namespace ClientTest
 
         private async void BtnPowerOn_Click(object sender, EventArgs e)
         {
-            await TurnOnCamera(CameraId.WideAngle);
+            var response = await TurnOnCamera(CameraId.WideAngle, Binning.Binning1x1);
         }
 
         private async void BtnPowerOff_Click(object sender, EventArgs e)
         {
-            await TurnOffCamera(CameraId.WideAngle);
+            var response = await TurnOffCamera(CameraId.WideAngle);
         }
 
         private async void BtnRotateAnti_Click(object sender, EventArgs e)
