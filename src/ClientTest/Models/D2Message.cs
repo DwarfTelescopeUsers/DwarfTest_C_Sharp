@@ -1,109 +1,61 @@
-﻿namespace ClientTest.Models
+﻿public class D2Message
 {
-    public class D2Message
-    {
-        public int Interface { get; set; }
+    public int Interface { get; set; }
+    public int? AwbMode { get; set; }
+    public int? AwbCT { get; set; }
+    public int? AccelStep { get; set; }
+    public int? AstroState { get; set; }
+    public int? Binning { get; set; }
+    public int? Brightness { get; set; }
+    public int? CamId { get; set; }
+    public int? CamState { get; set; }
+    public int? CenterX { get; set; }
+    public int? CenterY { get; set; }
+    public int? Code { get; set; }
+    public int? Contrast { get; set; }
+    public int? Count { get; set; }
+    public int? DarkExp { get; internal set; }
+    public int? DarkGain { get; internal set; }
+    public string? DEC { get; set; }
+    public int? DecelStep { get; set; }
+    public int? Direction { get; set; }
+    public int? ExpMode { get; set; }
+    public float? Exp { get; set; }
+    public int? Format { get; set; }
+    public int? GainMode { get; set; }
+    public int? Gain { get; set; }
+    public int? Hue { get; set; }
+    public int? Id { get; set; }
+    public int? IrState { get; set; }
+    public int? Interval { get; set; }
+    public int? MStep { get; set; }
+    public int? Mode { get; set; }
+    public string? Name { get; set; }
+    public int? OutTime { get; set; }
+    public int? OverlayCount { get; set; }
+    public int? Pulse { get; set; }
+    public int? PhotoState { get; set; }
+    public int? Quality { get; set; }
+    public string? RA { get; set; }
+    public int? RecordState { get; set; }
+    public int? Saturation { get; set; }
+    public int? Sharpness { get; set; }
+    public int? Source { get; internal set; }
+    public int? Speed { get; set; }
+    public string? Target { get; set; }
+    public int? TrackState { get; set; }
+    public int? Value { get; set; }
+    public int? H { get; internal set; }
+    public int? W { get; internal set; }
+    public int? Y { get; internal set; }
+    public int? X { get; internal set; }
+    public int? Trend { get; internal set; }
 
-        /// <summary>
-        /// 0:Long focal camera 1:Wide-angle camera
-        /// </summary>
-        public int CamId { get; set; }
-
-        /// <summary>
-        /// Error code
-        /// </summary>
-        /// 
-        public int? Code { get; set; }
-
-        public int? Count { get; set; }
-
-        /// <summary>
-        /// 10006:
-        /// 0:Single shot 1:Continuous Capture
-        /// 
-        /// 10001:
-        /// Long focal camera：0:auto 1:man
-        /// Wide-angle camera：3:auto 1:man
-        /// 
-        /// 10004:
-        /// 0:auto 1:manual
-        /// 
-        /// 10211:
-        /// 0：Global focus 1：Area focus
-        /// 
-        /// 10212:
-        /// 0：auto 1：manual
-        /// 
-        /// 10213:
-        /// 0：Incandescent lamp
-        /// 1：Fluorescent lamp
-        /// 2：Warm fluorescent lamp
-        /// 3：sunlight
-        /// 4：overcast sky
-        /// 5：evening twilight
-        /// 6：shadow
-        /// 
-        /// </summary>
-        /// 
-        public int? Mode { get; set; }
-
-        /// <summary>
-        /// Name it with a phone timestamp
-        /// </summary>
-        public string? Name { get; set; }
-
-        /// <summary>
-        /// 1s-60s
-        /// </summary>
-        public int? Interval { get; set; }
-
-        /// <summary>
-        /// 1s-
-        /// </summary>
-        public int? OutTime { get; set; }
-
-        /// <summary>
-        /// Long focal range:0-255 default：128
-        /// Wide-angle range：-64-64 default：0
-        /// </summary>
-        public int? Value { get; set; }
-
-        /// <summary>
-        /// 0-1920
-        /// </summary>
-        public int? CenterX { get; set; }
-
-        /// <summary>
-        /// 0-1080
-        /// </summary>
-        public int? CenterY { get; set; }
-
-        /// <summary>
-        /// motor id int 1:spin 2:pitch
-        /// </summary>
-        public int? Id { get; set; }
-
-        public int? MStep { get; set; }
-
-        public int? Speed { get; set; }
-        public int? Direction { get; set;}
-        public int? Pulse { get; set; }
-
-        public int? AccelStep { get; set; }
-        public int? DecelStep { get; set; }
-        /*
-
-mode int 1:continuous mode 2:pulse mode
-mStep(subdivide) int 1 2 4 8 16 32 64 128 256
-speed int range:0-65536（1-50000&&
-<1000*mStep）
-direction int 0:anticlockwise 1:clockwise
-pulse int range:>=2（mStep<=32）
->=5(mStep>32)
-accelStep(Acceleration steps) int 0-1000
-
-         */
-
-    }
-
+    public int? ChargeState { get; set; }
+    public int? TfState { get; set; }
+    public int? PowerIndState { get; set; }
+    public int? Ele { get; set; }
+    public string? FwVersion { get; set; }
+    public int? CpuMode { get; set; }
+    public int? MtpMode { get; set; }
 }

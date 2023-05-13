@@ -1,3 +1,6 @@
+using static System.Net.WebRequestMethods;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
 namespace ClientTest
 {
     public static class CommandOpcodes
@@ -7,15 +10,15 @@ namespace ClientTest
         // ===============
         public const int TurnOnCameraCmd = 10000;
         public const int TurnOffCameraCmd = 10017;
-
+        public const int SetPreviewImageQualityCmd = 10016;
         // ===============
         // 3.2 photo and video
         // ===============
         public const int TakePhotoCmd = 10006;
         public const int StartRecordingCmd = 10007;
         public const int StopRecordingCmd = 10009;
-        public const int StartTimelapseCmd = 10018;
-        public const int StopTimelapseCmd = 10019;
+        public const int StartTimeLapsePhotographyCmd = 10018;
+        public const int StopTimeLapsePhotographyCmd = 10019;
 
         // ===============
         // 3.3 Adjust ISP parameters
@@ -36,35 +39,39 @@ namespace ClientTest
         public const int SetIRCutCmd = 10203;
 
         // ===============
-        // 3.4 status
+        // 3.4 Gets DWARF running status and parameters
         // ===============
-        public const int StatusTelephotoCmd = 10215;
-        public const int StatusIRTelephotoCmd = 10216;
-        public const int StatusWorkingStateTelephotoCmd = 10022;
-        public const int StatusWideangleCmd = 10217;
+        public const int GetTelephotoIspParametersCmd = 10215;
+        public const int GetTelephotoIrCutStateCmd = 10216;
+        public const int GetTelephotoWorkingStateCmd = 10022;
+        public const int GetWideangleIspParameterCmd = 10217;
 
+        // 4. Advanced function API
+        // Before using the astronomy function, you must set the UTC+0 time
+        // HTTP reques: http://192.168.88.1:8092/date?date=yyyy-mm-dd hh:mm:ss
         // ===============
-        // 4.1 Astro
+        // 4.1 Astronomical function
         // ===============
-        public const int SetupGotoCmd = 11205;
+        public const int CorrectionCmd = 11205;
         public const int StartGotoCmd = 11203;
-        public const int TakeAstroPhotoCmd = 10011;
-        public const int StopAstroPhotoCmd = 10015;
+        public const int TakeRawPicturesCmd = 10011;
+        public const int StopTakingRawImagesCmd = 10015;
+        public const int SwitchRawPreviewSource = 10020;
         public const int TakeAstroDarkFramesCmd = 10026;
         public const int QueryShotFieldCmd = 10026;
 
         // ===============
         // 4.2 tracking
         // ===============
-        public const int TraceInitCmd = 11200;
+        public const int TraceInitializationCmd = 11200;
         public const int StartTrackingCmd = 11201;
         public const int StopTrackingCmd = 11202;
 
         // ===============
         // 4.3 panoromic
         // ===============
-        public const int StartPanoCmd = 10103;
-        public const int StopPanoCmd = 10106;
+        public const int StartPanoramaCmd = 10103;
+        public const int StopPanoramaCmd = 10106;
 
         // ===============
         // 5 motion control
@@ -75,6 +82,8 @@ namespace ClientTest
         public const int SetDirectionCmd = 10108;
         public const int SetSubdivideCmd = 10109;
 
+        //6. File preview and download API
+
         // ===============
         // 7.1 system status
         // ===============
@@ -84,12 +93,22 @@ namespace ClientTest
         // 7.2 microsd card status
         // ===============
         public const int MicrosdStatusCmd = 11405;
-        public const int MicrosdAvailableCmd = 11409;
+        public const int CheckMicroSDCmd = 11409;
 
         // ===============
         // 7.4 dwarf status
         // ===============
-        public const int DwarfSoftwareVersionCmd = 11410;
-        public const int DwarfChargingStatusCmd = 11011;
+        public const int GetDwarfSoftwareVersionNumberCmd = 11410;
+        public const int ChargingStatusCmd = 11011;
+
+        public const int MTPModeCmd = 11408;
+        public const int OTAUpgradeCmd = 11400;
+
+        public const int PowerAcquisitionCmd = 11003;
+        public const int ShutDownCmd = 11004;
+        public const int RGBControlCmd = 11000;
+        public const int TurnOffRGBCmd = 11008;
+        public const int TurnOnPowerIndicatorCmd = 11009;
+        public const int TurnOffPowerIndicatorCmd = 11010;
     }
 }
