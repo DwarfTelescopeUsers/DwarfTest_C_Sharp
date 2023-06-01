@@ -48,7 +48,7 @@ public class D2Message
     public int? TrackState { get; set; }
     public int? Value { get; set; }
 
-    [JsonPropertyName("value")]
+    [JsonPropertyName("response")]
     public double? ValueDouble { get; set; }
     public int? H { get; internal set; }
     public int? W { get; internal set; }
@@ -60,7 +60,9 @@ public class D2Message
     public int? TfState { get; set; }
     public int? PowerIndState { get; set; }
     public int? Ele { get; set; }
-    public string? FwVersion { get; set; }
+    public string? Version { get; set; }
     public int? CpuMode { get; set; }
     public int? MtpMode { get; set; }
+    public int? Size { get; set; }
+    public int? Avail { get; set; }
 }

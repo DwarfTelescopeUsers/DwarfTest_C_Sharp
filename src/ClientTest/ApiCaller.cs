@@ -15,6 +15,11 @@ namespace ClientTest
             Telephoto = 0,
             WideAngle = 1
         }
+        public enum MotorId
+        {
+            Spin = 1,
+            Pitch = 2
+        }
 
         public enum ShotMode
         {
@@ -32,6 +37,12 @@ namespace ClientTest
         {
             Auto = 0,
             Manual = 1
+        }
+
+        public enum MotorDirection
+        {
+            ACW_Up = 0,
+            CW_Down = 1
         }
 
         private const int autofocusGlobal = 0;
@@ -64,7 +75,7 @@ namespace ClientTest
 
 
         // "wss://localhost:7122/ws"
-        private static readonly string uri = "ws://192.168.1.162:9900";
+        private static readonly string uri = "ws://192.168.0.67:9900";
 
         private static readonly JsonSerializerOptions jsoptions = new()
         {
@@ -894,30 +905,12 @@ Note:
             return response;
         }
 
-        public static async Task<D2Message?> RotateAnticlockwise()
-        {
-            D2Message d2Message = new()
-            {
-                Interface = 10100,
-                Id = 1,
-                Mode = 1,
-                MStep = 1,
-                Speed = 1000,
-                Direction = 0, // Anti-clockwise
-                Pulse = 2,
-                AccelStep = 20
-            };
-
-            D2Message? response = await SendMessage(d2Message);
-            return response;
-        }
-
-        public static async Task<D2Message?> StopSpin()
+        public static async Task<D2Message?> StopSpin(MotorId id)
         {
             D2Message d2Message = new()
             {
                 Interface = 10101,
-                Id = 1,
+                Id = (int)id,
                 DecelStep = 20
             };
 
@@ -925,16 +918,16 @@ Note:
             return response;
         }
 
-        public static async Task<D2Message?> RotateClockwise()
+        public static async Task<D2Message?> RotateMotor(MotorId id, MotorDirection drn)
         {
             D2Message d2Message = new()
             {
                 Interface = 10100,
-                Id = 1,
+                Id = (int)id, 
                 Mode = 1,
                 MStep = 1,
-                Speed = 1000,
-                Direction = 1, // Clockwise
+                Speed = 500,
+                Direction = (int)drn, // 0 = AntiClockwise/Up, 1 = Clockwise/Down
                 Pulse = 2,
                 AccelStep = 20
             };
