@@ -99,7 +99,25 @@ namespace ClientTest
             e.VlcLibDirectory = new DirectoryInfo(Path.Combine(".", "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
         }
 
+        private async void ExposureCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AutoManual autoManual = AutoManual.Manual;
+            if (ExposureCB.SelectedIndex == 0)
+            {
+                autoManual = AutoManual.Auto;
+            }
+            D2Message? message = await SetExposureMode(CameraId.Telephoto, autoManual);
+        }
 
+        private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AutoManual autoManual = AutoManual.Manual;
+            if (comboBox1.SelectedIndex == 0)
+            {
+                autoManual = (AutoManual)3;
+            }
+            D2Message? message = await SetExposureMode(CameraId.WideAngle, autoManual);
+        }
     }
 }
 //this.vlcControl
