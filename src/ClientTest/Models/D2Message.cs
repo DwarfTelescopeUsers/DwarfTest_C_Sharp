@@ -18,7 +18,7 @@ public class D2Message
     public int? Count { get; set; }
     public int? DarkExp { get; internal set; }
     public int? DarkGain { get; internal set; }
-    public string? DEC { get; set; }
+    public double? DEC { get; set; }
     public int? DecelStep { get; set; }
     public int? Direction { get; set; }
     public int? ExpMode { get; set; }
@@ -38,7 +38,7 @@ public class D2Message
     public int? Pulse { get; set; }
     public int? PhotoState { get; set; }
     public int? Quality { get; set; }
-    public string? RA { get; set; }
+    public double? RA { get; set; }
     public int? RecordState { get; set; }
     public int? Saturation { get; set; }
     public int? Sharpness { get; set; }
@@ -65,4 +65,9 @@ public class D2Message
     public int? MtpMode { get; set; }
     public int? Size { get; set; }
     public int? Avail { get; set; }
+    public double? Lon { get; internal set; }
+    public double? Lat { get; internal set; }
+    public string? Date { get; internal set; }
+    public string? Path { get; internal set; }
+    public int? Planet { get; internal set; }
 }

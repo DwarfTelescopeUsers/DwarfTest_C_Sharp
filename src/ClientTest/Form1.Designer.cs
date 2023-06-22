@@ -73,6 +73,8 @@
             toolStripStatusLabel2 = new ToolStripStatusLabel();
             toolStripSDCardPB = new ToolStripProgressBar();
             StatusBarTimer = new System.Windows.Forms.Timer(components);
+            groupBox2 = new GroupBox();
+            comboBox1 = new ComboBox();
             CamControlGB.SuspendLayout();
             TPTab.SuspendLayout();
             IRFilterGB.SuspendLayout();
@@ -99,6 +101,7 @@
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)vlcControl).BeginInit();
             statusStrip1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // BtnRotateAnti
@@ -396,6 +399,7 @@
             // 
             // WATab
             // 
+            WATab.Controls.Add(groupBox2);
             WATab.Location = new Point(4, 24);
             WATab.Name = "WATab";
             WATab.Padding = new Padding(3);
@@ -535,6 +539,26 @@
             StatusBarTimer.Interval = 60000;
             StatusBarTimer.Tick += StatusBarTimer_Tick;
             // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(comboBox1);
+            groupBox2.Location = new Point(6, 6);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(125, 62);
+            groupBox2.TabIndex = 2;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Exposure (s)";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Auto", "1/10000", "1/8000", "1/6400", "1/5000", "1/4000", "1/3200", "1/2500", "1/1600", "1/1250", "1/1000", "1/800", "1/640", "1/500", "1/400", "1/320", "1/250", "1/160", "1/125", "1/100", "1/80", "1/60", "1/50", "1/40", "1/30", "1/20", "1/15", "1/13", "1/10", "1/8", "1/6", "1/5", "1/4", "1/3", "0.4", "0.5", "0.6", "0.8", "1", "1.3", "1.6", "2", "2.5", "3.2", "4", "5", "6", "8", "10", "13", "15" });
+            comboBox1.Location = new Point(6, 22);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(108, 23);
+            comboBox1.TabIndex = 0;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -587,6 +611,7 @@
             ((System.ComponentModel.ISupportInitialize)vlcControl).EndInit();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
+            groupBox2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
