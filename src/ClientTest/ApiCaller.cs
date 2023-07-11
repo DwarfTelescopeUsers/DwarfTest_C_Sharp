@@ -1,5 +1,4 @@
-﻿using Fractions;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Net.WebSockets;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -11,16 +10,6 @@ namespace ClientTest
 {
     internal class ApiCaller
     {
-        public static Fraction[] TPExposureValues = { new Fraction(0,1), new Fraction (1,10000), new Fraction (1,8000), new Fraction (1,6400), 
-            new Fraction (1,5000), new Fraction (1,4000), new Fraction (1,3200), new Fraction (1,2500), new Fraction (1,1600), new Fraction (1,1250),
-            new Fraction (1,1000), new Fraction (1,800), new Fraction (1,640), new Fraction (1,500), new Fraction (1,400), new Fraction (1,320), 
-            new Fraction (1,250), new Fraction (1,160), new Fraction (1,125), new Fraction (1,100), new Fraction (1,80), new Fraction (1,60),
-            new Fraction (1,50), new Fraction (1,40), new Fraction (1,30), new Fraction (1,20), new Fraction (1,15), new Fraction (1,13), 
-            new Fraction (1,10), new Fraction (1,8), new Fraction (1,6), new Fraction (1,5), new Fraction (1,4), new Fraction (1,3), new Fraction (4,10),
-            new Fraction (5,10), new Fraction (6,10), new Fraction (8,10), new Fraction (1,1), new Fraction (13,10), new Fraction (16,10), new Fraction (2,1),
-            new Fraction (25,10), new Fraction (32,10), new Fraction (4,1), new Fraction (5,1), new Fraction (6,1), new Fraction (8,1), new Fraction (10,1),
-            new Fraction (13,1), new Fraction (15,1)
-        };
         public enum CameraId
         {
             Telephoto = 0,
@@ -31,13 +20,6 @@ namespace ClientTest
             Spin = 1,
             Pitch = 2
         }
-
-        public enum GainMode
-        {
-            Auto = 0,
-            Manual = 1
-        }
-
         public enum ShotMode
         {
             Single = 0,
@@ -1054,7 +1036,6 @@ Note:
             try
             {
                 string sendMessage = JsonSerializer.Serialize(d2Message, jsoptions);
-                sendMessage.Replace("ValueDouble", "Value");
                 Debug.WriteLine($"Send message: {sendMessage}");
 
                 using ClientWebSocket webSocket = new();

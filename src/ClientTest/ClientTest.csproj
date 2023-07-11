@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fractions" Version="7.2.1" />
     <PackageReference Include="LibVLCSharp" Version="3.7.0" />
     <PackageReference Include="System.Net.WebSockets" Version="4.3.0" />
     <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.18" />
