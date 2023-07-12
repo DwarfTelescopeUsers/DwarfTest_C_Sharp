@@ -1,4 +1,6 @@
+using System.Windows.Forms.VisualStyles;
 using static ClientTest.ApiCaller;
+using static ClientTest.Telephoto;
 
 namespace ClientTest
 {
@@ -16,7 +18,7 @@ namespace ClientTest
             var response = await TurnOnCamera(CameraId.WideAngle, Binning.Binning1x1);
             BtnWAOn.BackColor = Color.LimeGreen;
             BtnTPOn.BackColor = Color.Transparent;
-            Uri uri = new Uri("http://192.168.0.67:8092/thirdstream");
+            Uri uri = new Uri(vlcWAUri);
             vlcControl.Play(uri);
         }
 
@@ -24,6 +26,7 @@ namespace ClientTest
         {
             var response = await TurnOffCamera(CameraId.WideAngle);
             BtnWAOn.BackColor = Color.Transparent;
+            vlcControl.Stop();
         }
 
         private async void BtnTPOn_Click(object sender, EventArgs e)
@@ -31,7 +34,7 @@ namespace ClientTest
             var response = await TurnOnCamera(CameraId.Telephoto, Binning.Binning2x2);
             BtnWAOn.BackColor = Color.Transparent;
             BtnTPOn.BackColor = Color.LimeGreen;
-            Uri uri = new Uri("http://192.168.0.67:8092/mainstream");
+            Uri uri = new Uri(vlcTPUri);
             vlcControl.Play(uri);
         }
 
@@ -39,6 +42,7 @@ namespace ClientTest
         {
             var response = await TurnOffCamera(CameraId.Telephoto);
             BtnTPOn.BackColor = Color.Transparent;
+            vlcControl.Stop();
         }
 
         private async void BtnRotateAnti_Click(object sender, EventArgs e)
@@ -101,12 +105,22 @@ namespace ClientTest
 
         private async void ExposureCB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            double expValue = 0.0;
             AutoManual autoManual = AutoManual.Manual;
             if (ExposureCB.SelectedIndex == 0)
             {
                 autoManual = AutoManual.Auto;
             }
+            else
+            {
+                expValue = (Double)CalculateExposureValue(ExposureCB.Text);
+            }
+
             D2Message? message = await SetExposureMode(CameraId.Telephoto, autoManual);
+            if (autoManual == AutoManual.Manual)
+            {
+                message = await (SetExposureValue(CameraId.Telephoto, expValue));
+            }
         }
 
         private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

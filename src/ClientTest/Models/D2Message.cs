@@ -46,10 +46,13 @@ public class D2Message
     public int? Speed { get; set; }
     public string? Target { get; set; }
     public int? TrackState { get; set; }
+
+    // Value is used to carry int, double and string values
     public int? Value { get; set; }
+    public double? ValueDouble { get; set; }
+    public string? ValueString { get; set; }
 
     [JsonPropertyName("response")]
-    public double? ValueDouble { get; set; }
     public int? H { get; internal set; }
     public int? W { get; internal set; }
     public int? Y { get; internal set; }

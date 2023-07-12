@@ -90,8 +90,11 @@ namespace ClientTest
 
 
         // "wss://localhost:7122/ws"
-        private static readonly string uri = "ws://192.168.1.162:9900";
-        //private static readonly string uri = "ws://192.168.0.67:9900";
+        // private static readonly string baseUri = "192.168.1.162";
+        private static readonly string baseUri = "192.168.1.214";
+        private static readonly string uri = $"ws://{baseUri}:9900";
+        public static readonly string vlcWAUri = $"http://{baseUri}:8092/thirdstream";
+        public static readonly string vlcTPUri = $"http://{baseUri}:8092/mainstream";
 
         private static readonly JsonSerializerOptions jsoptions = new()
         {
@@ -1036,6 +1039,11 @@ Note:
             try
             {
                 string sendMessage = JsonSerializer.Serialize(d2Message, jsoptions);
+                // Handle cases where value is not an integer
+                if (sendMessage.Contains($@"""interface"":{CommandOpcodes.SetExposureValueCmd}"))
+                {
+                    sendMessage = sendMessage.Replace("valueDouble", "value");
+                }
                 Debug.WriteLine($"Send message: {sendMessage}");
 
                 using ClientWebSocket webSocket = new();
