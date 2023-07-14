@@ -11,6 +11,7 @@ namespace ClientTest
         {
             InitializeComponent();
             UpdateStatusBar();
+            // ToDo: Initialise UI based on existing camera settings
         }
 
         private async void BtnWAOn_Click(object sender, EventArgs e)
@@ -103,17 +104,21 @@ namespace ClientTest
             e.VlcLibDirectory = new DirectoryInfo(Path.Combine(".", "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
         }
 
+        #region Telephoto Controls
         private async void ExposureCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             double expValue = 0.0;
             AutoManual autoManual = AutoManual.Manual;
-            if (ExposureCB.SelectedIndex == 0)
+            if (TPExposureCB.SelectedIndex == 0)
             {
                 autoManual = AutoManual.Auto;
+                TPExposureGB.BackColor = Color.Lime;
             }
             else
             {
-                expValue = (Double)CalculateExposureValue(ExposureCB.Text);
+                expValue = (Double)CalculateExposureValue(TPExposureCB.Text);
+                TPExposureGB.BackColor = Color.Transparent;
+
             }
 
             D2Message? message = await SetExposureMode(CameraId.Telephoto, autoManual);
@@ -122,6 +127,119 @@ namespace ClientTest
                 message = await (SetExposureValue(CameraId.Telephoto, expValue));
             }
         }
+
+        private async void TPGainCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int gainValue = 0;
+            AutoManual autoManual = AutoManual.Manual;
+            if (TPGainCB.SelectedIndex == 0)
+            {
+                autoManual = AutoManual.Auto;
+                TPGainGB.BackColor = Color.Lime;
+            }
+            else
+            {
+                gainValue = Convert.ToInt16(TPGainCB.Text);
+                TPGainGB.BackColor = Color.Transparent;
+
+            }
+
+            D2Message? message = await SetGainMode(CameraId.Telephoto, autoManual);
+            if (autoManual == AutoManual.Manual)
+            {
+                message = await SetGainValue(CameraId.Telephoto, gainValue);
+            }
+        }
+
+        private async void TPIRCutRB_Click(object sender, EventArgs e)
+        {
+            TPIRPassRB.Checked = false;
+            TPIRCutRB.Checked = true;
+            D2Message? message = await SetIRCut(CameraId.Telephoto, IRCut.IRCut);
+        }
+
+        private async void TPIRPassRB_Click(object sender, EventArgs e)
+        {
+            TPIRPassRB.Checked = true;
+            TPIRCutRB.Checked = false;
+            D2Message? message = await SetIRCut(CameraId.Telephoto, IRCut.IRPass);
+        }
+
+        private async void TPBrightnessTB_ValueChanged(object sender, EventArgs e)
+        {
+            var value = TPBrightnessTB.Value;
+            TPBrightnessLabel.Text = value.ToString();
+            // Input values 0 - 100. Actual values sent 0 - 255
+            value = (int)(value * 2.55);
+            D2Message? message = await SetBrightnessValue(CameraId.Telephoto, value);
+        }
+
+        private async void TPContrastTB_ValueChanged(object sender, EventArgs e)
+        {
+            var value = TPContrastTB.Value;
+            TPContrastLabel.Text = value.ToString();
+            // Input values 0 - 100. Actual values sent 0 - 255
+            value = (int)(value * 2.55);
+            D2Message? message = await SetContrastValue(CameraId.Telephoto, value);
+        }
+
+        private async void TPSaturationTB_ValueChanged(object sender, EventArgs e)
+        {
+            var value = TPSaturationTB.Value;
+            TPSaturationLabel.Text = value.ToString();
+            // Input values 0 - 100. Actual values sent 0 - 255
+            value = (int)(value * 2.55);
+            D2Message? message = await SetSaturationValue(CameraId.Telephoto, value);
+        }
+
+        private async void TPHueTB_ValueChanged(object sender, EventArgs e)
+        {
+            var value = TPHueTB.Value;
+            TPHueLabel.Text = value.ToString();
+            // Input values 0 - 360.
+            D2Message? message = await SetHueValue(CameraId.Telephoto, value);
+        }
+
+        private async void TPSharpnessTB_ValueChanged(object sender, EventArgs e)
+        {
+            var value = TPSharpnessTB.Value;
+            TPSharpnessLabel.Text = value.ToString();
+            // Input values 0 - 100.
+            D2Message? message = await SetSharpnessValue(CameraId.Telephoto, value);
+        }
+
+        private void TPPreviewTB_ValueChanged(object sender, EventArgs e)
+        {
+            // ToDo: Add functionality once API is updated
+        }
+
+        private void TPTrackBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Right click on the control acts a Reset
+            if (e.Button == MouseButtons.Right)
+            {
+                int value = 0;
+                switch (((TrackBar)sender).Name)
+                {
+                    case "TPBrightnessTB":
+                    case "TPContrastTB":
+                    case "TPSaturationTB":
+                    case "TPSharpnessTB":
+                        {
+                            value = 50;
+                            break;
+                        }
+                    case "TPHueTB":
+                        {
+                            value = 180;
+                            break;
+                        }
+                }
+                ((TrackBar)sender).Value = value;
+            }
+        }
+
+        #endregion
 
         private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -132,6 +250,8 @@ namespace ClientTest
             }
             D2Message? message = await SetExposureMode(CameraId.WideAngle, autoManual);
         }
+
+        
     }
 }
 //this.vlcControl

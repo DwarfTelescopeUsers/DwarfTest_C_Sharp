@@ -287,9 +287,11 @@ namespace ClientTest
         }
         public static async Task<D2Message?> SetHueValue(CameraId cameraId, int value)
         {
-            if (cameraId == CameraId.Telephoto && value is < 0 or > 255)
+            if (cameraId == CameraId.Telephoto && value is < 0 or > 360)
             {
-                throw new ArgumentOutOfRangeException(nameof(value), "Telephoto Value must be between 0 and 255");
+                // throw new ArgumentOutOfRangeException(nameof(value), "Telephoto Value must be between 0 and 255");
+                // Android app allows values from 0 - 360 to be entered
+                throw new ArgumentOutOfRangeException(nameof(value), "Telephoto Value must be between 0 and 360");
             }
             if (cameraId == CameraId.WideAngle && value is < -2000 or > 2000)
             {
