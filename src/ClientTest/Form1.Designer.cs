@@ -33,7 +33,21 @@
             BtnRotateStop = new Button();
             BtnRotateClock = new Button();
             CamControlGB = new TabControl();
+            ConfigTab = new TabPage();
+            saveDetailsButton = new Button();
+            siteDetailsGB = new GroupBox();
+            enterLatButton = new Button();
+            enterLonButton = new Button();
+            LongitudeLabel = new Label();
+            longitudeTB = new TextBox();
+            latitudeLabel = new Label();
+            latitudeTB = new TextBox();
+            NetworkIPGB = new GroupBox();
+            ipTextBox = new TextBox();
             TPTab = new TabPage();
+            groupBox3 = new GroupBox();
+            TPPreviewLabel = new Label();
+            TPPreviewTB = new TrackBar();
             TPSharpnessGB = new GroupBox();
             TPSharpnessLabel = new Label();
             TPSharpnessTB = new TrackBar();
@@ -57,7 +71,18 @@
             TPExposureGB = new GroupBox();
             TPExposureCB = new ComboBox();
             WATab = new TabPage();
-            groupBox2 = new GroupBox();
+            WAGainGB = new GroupBox();
+            WAGainLabel = new Label();
+            WAGainTB = new TrackBar();
+            WAExposureGB = new GroupBox();
+            WAExposureCB = new ComboBox();
+            tabPage1 = new TabPage();
+            WAISPButton = new Button();
+            TPISPButton = new Button();
+            richTextBox1 = new RichTextBox();
+            astroTab = new TabPage();
+            objectGB = new GroupBox();
+            richTextBox2 = new RichTextBox();
             comboBox1 = new ComboBox();
             groupBox1 = new GroupBox();
             BtnTPOff = new Button();
@@ -74,11 +99,13 @@
             toolStripStatusLabel2 = new ToolStripStatusLabel();
             toolStripSDCardPB = new ToolStripProgressBar();
             StatusBarTimer = new System.Windows.Forms.Timer(components);
-            groupBox3 = new GroupBox();
-            TPPreviewLabel = new Label();
-            TPPreviewTB = new TrackBar();
             CamControlGB.SuspendLayout();
+            ConfigTab.SuspendLayout();
+            siteDetailsGB.SuspendLayout();
+            NetworkIPGB.SuspendLayout();
             TPTab.SuspendLayout();
+            groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)TPPreviewTB).BeginInit();
             TPSharpnessGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TPSharpnessTB).BeginInit();
             TPHueGB.SuspendLayout();
@@ -93,17 +120,20 @@
             TPGainGB.SuspendLayout();
             TPExposureGB.SuspendLayout();
             WATab.SuspendLayout();
-            groupBox2.SuspendLayout();
+            WAGainGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)WAGainTB).BeginInit();
+            WAExposureGB.SuspendLayout();
+            tabPage1.SuspendLayout();
+            astroTab.SuspendLayout();
+            objectGB.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)vlcControl).BeginInit();
             statusStrip1.SuspendLayout();
-            groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)TPPreviewTB).BeginInit();
             SuspendLayout();
             // 
             // BtnRotateAnti
             // 
-            BtnRotateAnti.Location = new Point(44, 76);
+            BtnRotateAnti.Location = new Point(11, 78);
             BtnRotateAnti.Name = "BtnRotateAnti";
             BtnRotateAnti.Size = new Size(89, 23);
             BtnRotateAnti.TabIndex = 1;
@@ -113,7 +143,7 @@
             // 
             // BtnRotateStop
             // 
-            BtnRotateStop.Location = new Point(139, 76);
+            BtnRotateStop.Location = new Point(106, 78);
             BtnRotateStop.Name = "BtnRotateStop";
             BtnRotateStop.Size = new Size(75, 23);
             BtnRotateStop.TabIndex = 2;
@@ -123,7 +153,7 @@
             // 
             // BtnRotateClock
             // 
-            BtnRotateClock.Location = new Point(220, 76);
+            BtnRotateClock.Location = new Point(187, 78);
             BtnRotateClock.Name = "BtnRotateClock";
             BtnRotateClock.Size = new Size(85, 23);
             BtnRotateClock.TabIndex = 3;
@@ -133,13 +163,123 @@
             // 
             // CamControlGB
             // 
+            CamControlGB.Controls.Add(ConfigTab);
             CamControlGB.Controls.Add(TPTab);
             CamControlGB.Controls.Add(WATab);
-            CamControlGB.Location = new Point(12, 201);
+            CamControlGB.Controls.Add(tabPage1);
+            CamControlGB.Controls.Add(astroTab);
+            CamControlGB.Location = new Point(12, 173);
             CamControlGB.Name = "CamControlGB";
             CamControlGB.SelectedIndex = 0;
-            CamControlGB.Size = new Size(618, 528);
+            CamControlGB.Size = new Size(423, 528);
             CamControlGB.TabIndex = 5;
+            CamControlGB.MouseDown += TrackBar_MouseDown;
+            // 
+            // ConfigTab
+            // 
+            ConfigTab.Controls.Add(saveDetailsButton);
+            ConfigTab.Controls.Add(siteDetailsGB);
+            ConfigTab.Controls.Add(NetworkIPGB);
+            ConfigTab.Location = new Point(4, 24);
+            ConfigTab.Name = "ConfigTab";
+            ConfigTab.Size = new Size(415, 500);
+            ConfigTab.TabIndex = 2;
+            ConfigTab.Text = "Configuration";
+            ConfigTab.UseVisualStyleBackColor = true;
+            // 
+            // saveDetailsButton
+            // 
+            saveDetailsButton.Location = new Point(305, 461);
+            saveDetailsButton.Name = "saveDetailsButton";
+            saveDetailsButton.Size = new Size(94, 23);
+            saveDetailsButton.TabIndex = 2;
+            saveDetailsButton.Text = "Save Details";
+            saveDetailsButton.UseVisualStyleBackColor = true;
+            saveDetailsButton.Click += saveDetailsButton_Click;
+            // 
+            // siteDetailsGB
+            // 
+            siteDetailsGB.Controls.Add(enterLatButton);
+            siteDetailsGB.Controls.Add(enterLonButton);
+            siteDetailsGB.Controls.Add(LongitudeLabel);
+            siteDetailsGB.Controls.Add(longitudeTB);
+            siteDetailsGB.Controls.Add(latitudeLabel);
+            siteDetailsGB.Controls.Add(latitudeTB);
+            siteDetailsGB.Location = new Point(3, 61);
+            siteDetailsGB.Name = "siteDetailsGB";
+            siteDetailsGB.Size = new Size(271, 130);
+            siteDetailsGB.TabIndex = 1;
+            siteDetailsGB.TabStop = false;
+            siteDetailsGB.Text = "Site Details";
+            // 
+            // enterLatButton
+            // 
+            enterLatButton.Location = new Point(218, 37);
+            enterLatButton.Name = "enterLatButton";
+            enterLatButton.Size = new Size(43, 23);
+            enterLatButton.TabIndex = 7;
+            enterLatButton.Text = "Enter";
+            enterLatButton.UseVisualStyleBackColor = true;
+            enterLatButton.Click += enterLatButton_Click;
+            // 
+            // enterLonButton
+            // 
+            enterLonButton.Location = new Point(217, 91);
+            enterLonButton.Name = "enterLonButton";
+            enterLonButton.Size = new Size(43, 23);
+            enterLonButton.TabIndex = 4;
+            enterLonButton.Text = "Enter";
+            enterLonButton.UseVisualStyleBackColor = true;
+            enterLonButton.Click += enterLonButton_Click;
+            // 
+            // LongitudeLabel
+            // 
+            LongitudeLabel.AutoSize = true;
+            LongitudeLabel.Location = new Point(5, 72);
+            LongitudeLabel.Name = "LongitudeLabel";
+            LongitudeLabel.Size = new Size(61, 15);
+            LongitudeLabel.TabIndex = 3;
+            LongitudeLabel.Text = "Longitude";
+            // 
+            // longitudeTB
+            // 
+            longitudeTB.Location = new Point(5, 91);
+            longitudeTB.Name = "longitudeTB";
+            longitudeTB.Size = new Size(206, 23);
+            longitudeTB.TabIndex = 2;
+            // 
+            // latitudeLabel
+            // 
+            latitudeLabel.AutoSize = true;
+            latitudeLabel.Location = new Point(5, 19);
+            latitudeLabel.Name = "latitudeLabel";
+            latitudeLabel.Size = new Size(50, 15);
+            latitudeLabel.TabIndex = 1;
+            latitudeLabel.Text = "Latitude";
+            // 
+            // latitudeTB
+            // 
+            latitudeTB.Location = new Point(5, 38);
+            latitudeTB.Name = "latitudeTB";
+            latitudeTB.Size = new Size(206, 23);
+            latitudeTB.TabIndex = 0;
+            // 
+            // NetworkIPGB
+            // 
+            NetworkIPGB.Controls.Add(ipTextBox);
+            NetworkIPGB.Location = new Point(3, 3);
+            NetworkIPGB.Name = "NetworkIPGB";
+            NetworkIPGB.Size = new Size(217, 52);
+            NetworkIPGB.TabIndex = 0;
+            NetworkIPGB.TabStop = false;
+            NetworkIPGB.Text = "IP Address";
+            // 
+            // ipTextBox
+            // 
+            ipTextBox.Location = new Point(6, 22);
+            ipTextBox.Name = "ipTextBox";
+            ipTextBox.Size = new Size(205, 23);
+            ipTextBox.TabIndex = 2;
             // 
             // TPTab
             // 
@@ -155,10 +295,44 @@
             TPTab.Location = new Point(4, 24);
             TPTab.Name = "TPTab";
             TPTab.Padding = new Padding(3);
-            TPTab.Size = new Size(610, 500);
+            TPTab.Size = new Size(415, 500);
             TPTab.TabIndex = 0;
             TPTab.Text = "Telephoto Settings";
             TPTab.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            groupBox3.BackColor = Color.Transparent;
+            groupBox3.Controls.Add(TPPreviewLabel);
+            groupBox3.Controls.Add(TPPreviewTB);
+            groupBox3.Location = new Point(230, 309);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(202, 75);
+            groupBox3.TabIndex = 9;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Preview Quality";
+            // 
+            // TPPreviewLabel
+            // 
+            TPPreviewLabel.AutoSize = true;
+            TPPreviewLabel.Location = new Point(172, 32);
+            TPPreviewLabel.Name = "TPPreviewLabel";
+            TPPreviewLabel.Size = new Size(19, 15);
+            TPPreviewLabel.TabIndex = 1;
+            TPPreviewLabel.Text = "55";
+            // 
+            // TPPreviewTB
+            // 
+            TPPreviewTB.Location = new Point(9, 19);
+            TPPreviewTB.Maximum = 80;
+            TPPreviewTB.Minimum = 30;
+            TPPreviewTB.Name = "TPPreviewTB";
+            TPPreviewTB.Size = new Size(163, 45);
+            TPPreviewTB.SmallChange = 5;
+            TPPreviewTB.TabIndex = 0;
+            TPPreviewTB.TickFrequency = 5;
+            TPPreviewTB.Value = 55;
+            TPPreviewTB.ValueChanged += TPPreviewTB_ValueChanged;
             // 
             // TPSharpnessGB
             // 
@@ -190,7 +364,7 @@
             TPSharpnessTB.TabIndex = 0;
             TPSharpnessTB.Value = 50;
             TPSharpnessTB.ValueChanged += TPSharpnessTB_ValueChanged;
-            TPSharpnessTB.MouseDown += TPTrackBar_MouseDown;
+            TPSharpnessTB.MouseDown += TrackBar_MouseDown;
             // 
             // TPHueGB
             // 
@@ -222,7 +396,7 @@
             TPHueTB.TabIndex = 0;
             TPHueTB.Value = 180;
             TPHueTB.ValueChanged += TPHueTB_ValueChanged;
-            TPHueTB.MouseDown += TPTrackBar_MouseDown;
+            TPHueTB.MouseDown += TrackBar_MouseDown;
             // 
             // TPSaturationGB
             // 
@@ -254,7 +428,7 @@
             TPSaturationTB.TabIndex = 0;
             TPSaturationTB.Value = 50;
             TPSaturationTB.ValueChanged += TPSaturationTB_ValueChanged;
-            TPSaturationTB.MouseDown += TPTrackBar_MouseDown;
+            TPSaturationTB.MouseDown += TrackBar_MouseDown;
             // 
             // TPContrastGB
             // 
@@ -286,7 +460,7 @@
             TPContrastTB.TabIndex = 0;
             TPContrastTB.Value = 50;
             TPContrastTB.ValueChanged += TPContrastTB_ValueChanged;
-            TPContrastTB.MouseDown += TPTrackBar_MouseDown;
+            TPContrastTB.MouseDown += TrackBar_MouseDown;
             // 
             // TPBrightnessGB
             // 
@@ -318,13 +492,13 @@
             TPBrightnessTB.TabIndex = 0;
             TPBrightnessTB.Value = 50;
             TPBrightnessTB.ValueChanged += TPBrightnessTB_ValueChanged;
-            TPBrightnessTB.MouseDown += TPTrackBar_MouseDown;
+            TPBrightnessTB.MouseDown += TrackBar_MouseDown;
             // 
             // TPIRCutGB
             // 
             TPIRCutGB.Controls.Add(TPIRPassRB);
             TPIRCutGB.Controls.Add(TPIRCutRB);
-            TPIRCutGB.Location = new Point(488, 6);
+            TPIRCutGB.Location = new Point(313, 6);
             TPIRCutGB.Name = "TPIRCutGB";
             TPIRCutGB.Size = new Size(119, 54);
             TPIRCutGB.TabIndex = 3;
@@ -397,38 +571,151 @@
             TPExposureCB.Size = new Size(108, 23);
             TPExposureCB.TabIndex = 0;
             TPExposureCB.Text = "Auto";
-            TPExposureCB.SelectedIndexChanged += ExposureCB_SelectedIndexChanged;
+            TPExposureCB.SelectedIndexChanged += TPExposureCB_SelectedIndexChanged;
             // 
             // WATab
             // 
-            WATab.Controls.Add(groupBox2);
+            WATab.Controls.Add(WAGainGB);
+            WATab.Controls.Add(WAExposureGB);
             WATab.Location = new Point(4, 24);
             WATab.Name = "WATab";
             WATab.Padding = new Padding(3);
-            WATab.Size = new Size(610, 500);
+            WATab.Size = new Size(415, 500);
             WATab.TabIndex = 1;
             WATab.Text = "Wideangle Settings";
             WATab.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // WAGainGB
             // 
-            groupBox2.Controls.Add(comboBox1);
-            groupBox2.Location = new Point(6, 6);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(125, 62);
-            groupBox2.TabIndex = 2;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Exposure (s)";
+            WAGainGB.BackColor = Color.Transparent;
+            WAGainGB.Controls.Add(WAGainLabel);
+            WAGainGB.Controls.Add(WAGainTB);
+            WAGainGB.Location = new Point(6, 74);
+            WAGainGB.Name = "WAGainGB";
+            WAGainGB.Size = new Size(202, 75);
+            WAGainGB.TabIndex = 5;
+            WAGainGB.TabStop = false;
+            WAGainGB.Text = "Gain";
+            // 
+            // WAGainLabel
+            // 
+            WAGainLabel.AutoSize = true;
+            WAGainLabel.Location = new Point(172, 33);
+            WAGainLabel.Name = "WAGainLabel";
+            WAGainLabel.Size = new Size(19, 15);
+            WAGainLabel.TabIndex = 1;
+            WAGainLabel.Text = "64";
+            // 
+            // WAGainTB
+            // 
+            WAGainTB.Location = new Point(9, 19);
+            WAGainTB.Maximum = 160;
+            WAGainTB.Minimum = 64;
+            WAGainTB.Name = "WAGainTB";
+            WAGainTB.Size = new Size(163, 45);
+            WAGainTB.TabIndex = 0;
+            WAGainTB.Value = 64;
+            WAGainTB.ValueChanged += WAGainTB_ValueChanged;
+            WAGainTB.MouseDown += TrackBar_MouseDown;
+            // 
+            // WAExposureGB
+            // 
+            WAExposureGB.BackColor = Color.Lime;
+            WAExposureGB.Controls.Add(WAExposureCB);
+            WAExposureGB.Location = new Point(6, 6);
+            WAExposureGB.Name = "WAExposureGB";
+            WAExposureGB.Size = new Size(125, 62);
+            WAExposureGB.TabIndex = 2;
+            WAExposureGB.TabStop = false;
+            WAExposureGB.Text = "Exposure (s)";
+            // 
+            // WAExposureCB
+            // 
+            WAExposureCB.FormattingEnabled = true;
+            WAExposureCB.Items.AddRange(new object[] { "Auto", "3/10000", "1/2500", "1/2000", "1/1600", "1/1250", "1/1000", "1/800", "1/640", "1/500", "1/400", "1/320", "1/250", "1/160", "1/125", "1/100", "1/80", "1/60", "1/50", "1/40", "1/30", "1/25", "1/20", "1/15", "1/13", "1/10", "1/8", "1/6", "1/5", "1/4", "1/3", "0.4", "0.5", "0.6", "0.8", "1" });
+            WAExposureCB.Location = new Point(6, 22);
+            WAExposureCB.Name = "WAExposureCB";
+            WAExposureCB.Size = new Size(108, 23);
+            WAExposureCB.TabIndex = 0;
+            WAExposureCB.Text = "Auto";
+            WAExposureCB.SelectedIndexChanged += WAExposureCB_SelectedIndexChanged;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(WAISPButton);
+            tabPage1.Controls.Add(TPISPButton);
+            tabPage1.Controls.Add(richTextBox1);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Size = new Size(415, 500);
+            tabPage1.TabIndex = 3;
+            tabPage1.Text = "tabPage1";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // WAISPButton
+            // 
+            WAISPButton.Location = new Point(234, 453);
+            WAISPButton.Name = "WAISPButton";
+            WAISPButton.Size = new Size(137, 23);
+            WAISPButton.TabIndex = 2;
+            WAISPButton.Text = "Wide Angle  ISP Values";
+            WAISPButton.UseVisualStyleBackColor = true;
+            WAISPButton.Click += WAISPButton_Click;
+            // 
+            // TPISPButton
+            // 
+            TPISPButton.Location = new Point(28, 453);
+            TPISPButton.Name = "TPISPButton";
+            TPISPButton.Size = new Size(137, 23);
+            TPISPButton.TabIndex = 1;
+            TPISPButton.Text = "Telephoto ISP Values";
+            TPISPButton.UseVisualStyleBackColor = true;
+            TPISPButton.Click += TPISPButton_Click;
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Location = new Point(3, 3);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(397, 444);
+            richTextBox1.TabIndex = 0;
+            richTextBox1.Text = "";
+            // 
+            // astroTab
+            // 
+            astroTab.Controls.Add(objectGB);
+            astroTab.Location = new Point(4, 24);
+            astroTab.Name = "astroTab";
+            astroTab.Size = new Size(415, 500);
+            astroTab.TabIndex = 4;
+            astroTab.Text = "Astrophotography";
+            astroTab.UseVisualStyleBackColor = true;
+            // 
+            // objectGB
+            // 
+            objectGB.Controls.Add(richTextBox2);
+            objectGB.Controls.Add(comboBox1);
+            objectGB.Location = new Point(3, 330);
+            objectGB.Name = "objectGB";
+            objectGB.Size = new Size(409, 167);
+            objectGB.TabIndex = 0;
+            objectGB.TabStop = false;
+            objectGB.Text = "Select Object";
+            // 
+            // richTextBox2
+            // 
+            richTextBox2.Location = new Point(6, 51);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.Size = new Size(397, 110);
+            richTextBox2.TabIndex = 1;
+            richTextBox2.Text = "";
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Auto", "1/10000", "1/8000", "1/6400", "1/5000", "1/4000", "1/3200", "1/2500", "1/1600", "1/1250", "1/1000", "1/800", "1/640", "1/500", "1/400", "1/320", "1/250", "1/160", "1/125", "1/100", "1/80", "1/60", "1/50", "1/40", "1/30", "1/20", "1/15", "1/13", "1/10", "1/8", "1/6", "1/5", "1/4", "1/3", "0.4", "0.5", "0.6", "0.8", "1", "1.3", "1.6", "2", "2.5", "3.2", "4", "5", "6", "8", "10", "13", "15" });
             comboBox1.Location = new Point(6, 22);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(108, 23);
+            comboBox1.Size = new Size(127, 23);
             comboBox1.TabIndex = 0;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // groupBox1
             // 
@@ -436,7 +723,7 @@
             groupBox1.Controls.Add(BtnTPOn);
             groupBox1.Controls.Add(BtnWAOff);
             groupBox1.Controls.Add(BtnWAOn);
-            groupBox1.Location = new Point(512, 12);
+            groupBox1.Location = new Point(317, 12);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(114, 155);
             groupBox1.TabIndex = 7;
@@ -485,7 +772,7 @@
             // 
             // BtnRotateUp
             // 
-            BtnRotateUp.Location = new Point(132, 47);
+            BtnRotateUp.Location = new Point(99, 49);
             BtnRotateUp.Name = "BtnRotateUp";
             BtnRotateUp.Size = new Size(89, 23);
             BtnRotateUp.TabIndex = 8;
@@ -495,7 +782,7 @@
             // 
             // BtnRotateDown
             // 
-            BtnRotateDown.Location = new Point(132, 105);
+            BtnRotateDown.Location = new Point(99, 107);
             BtnRotateDown.Name = "BtnRotateDown";
             BtnRotateDown.Size = new Size(89, 23);
             BtnRotateDown.TabIndex = 9;
@@ -506,9 +793,9 @@
             // vlcControl
             // 
             vlcControl.BackColor = Color.Black;
-            vlcControl.Location = new Point(656, 21);
+            vlcControl.Location = new Point(437, 12);
             vlcControl.Name = "vlcControl";
-            vlcControl.Size = new Size(908, 704);
+            vlcControl.Size = new Size(850, 600);
             vlcControl.Spu = -1;
             vlcControl.TabIndex = 10;
             vlcControl.Text = "videoWindow";
@@ -519,10 +806,10 @@
             // statusStrip1
             // 
             statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripFirmwareLabel1, toolStripStatusLabel1, toolStripPowerPB, toolStripStatusLabel2, toolStripSDCardPB });
-            statusStrip1.Location = new Point(0, 732);
+            statusStrip1.Location = new Point(0, 708);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.ShowItemToolTips = true;
-            statusStrip1.Size = new Size(1576, 22);
+            statusStrip1.Size = new Size(1293, 22);
             statusStrip1.TabIndex = 11;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -561,46 +848,11 @@
             StatusBarTimer.Interval = 60000;
             StatusBarTimer.Tick += StatusBarTimer_Tick;
             // 
-            // groupBox3
-            // 
-            groupBox3.BackColor = Color.Transparent;
-            groupBox3.Controls.Add(TPPreviewLabel);
-            groupBox3.Controls.Add(TPPreviewTB);
-            groupBox3.Location = new Point(230, 309);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(202, 75);
-            groupBox3.TabIndex = 9;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Preview Quality";
-            // 
-            // TPPreviewLabel
-            // 
-            TPPreviewLabel.AutoSize = true;
-            TPPreviewLabel.Location = new Point(172, 32);
-            TPPreviewLabel.Name = "TPPreviewLabel";
-            TPPreviewLabel.Size = new Size(19, 15);
-            TPPreviewLabel.TabIndex = 1;
-            TPPreviewLabel.Text = "55";
-            // 
-            // TPPreviewTB
-            // 
-            TPPreviewTB.Location = new Point(9, 19);
-            TPPreviewTB.Maximum = 80;
-            TPPreviewTB.Minimum = 30;
-            TPPreviewTB.Name = "TPPreviewTB";
-            TPPreviewTB.Size = new Size(163, 45);
-            TPPreviewTB.SmallChange = 5;
-            TPPreviewTB.TabIndex = 0;
-            TPPreviewTB.TickFrequency = 5;
-            TPPreviewTB.Value = 55;
-            TPPreviewTB.ValueChanged += TPPreviewTB_ValueChanged;
-            TPPreviewTB.MouseDown += TPTrackBar_MouseDown;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1576, 754);
+            ClientSize = new Size(1293, 730);
             Controls.Add(statusStrip1);
             Controls.Add(vlcControl);
             Controls.Add(BtnRotateDown);
@@ -613,7 +865,15 @@
             Name = "Form1";
             Text = "Form1";
             CamControlGB.ResumeLayout(false);
+            ConfigTab.ResumeLayout(false);
+            siteDetailsGB.ResumeLayout(false);
+            siteDetailsGB.PerformLayout();
+            NetworkIPGB.ResumeLayout(false);
+            NetworkIPGB.PerformLayout();
             TPTab.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)TPPreviewTB).EndInit();
             TPSharpnessGB.ResumeLayout(false);
             TPSharpnessGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)TPSharpnessTB).EndInit();
@@ -634,14 +894,17 @@
             TPGainGB.ResumeLayout(false);
             TPExposureGB.ResumeLayout(false);
             WATab.ResumeLayout(false);
-            groupBox2.ResumeLayout(false);
+            WAGainGB.ResumeLayout(false);
+            WAGainGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)WAGainTB).EndInit();
+            WAExposureGB.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            astroTab.ResumeLayout(false);
+            objectGB.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)vlcControl).EndInit();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)TPPreviewTB).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -670,8 +933,8 @@
         private ToolStripStatusLabel toolStripStatusLabel2;
         private ToolStripProgressBar toolStripSDCardPB;
         private System.Windows.Forms.Timer StatusBarTimer;
-        private GroupBox groupBox2;
-        private ComboBox comboBox1;
+        private GroupBox WAExposureGB;
+        private ComboBox WAExposureCB;
         private GroupBox TPGainGB;
         private ComboBox TPGainCB;
         private GroupBox TPIRCutGB;
@@ -695,5 +958,27 @@
         private GroupBox groupBox3;
         private Label TPPreviewLabel;
         private TrackBar TPPreviewTB;
+        private GroupBox WAGainGB;
+        private Label WAGainLabel;
+        private TrackBar WAGainTB;
+        private TabPage ConfigTab;
+        private GroupBox NetworkIPGB;
+        private TextBox ipTextBox;
+        private TabPage tabPage1;
+        private Button WAISPButton;
+        private Button TPISPButton;
+        private RichTextBox richTextBox1;
+        private Button saveDetailsButton;
+        private GroupBox siteDetailsGB;
+        private Button enterLonButton;
+        private Label LongitudeLabel;
+        private TextBox longitudeTB;
+        private Label latitudeLabel;
+        private TextBox latitudeTB;
+        private Button enterLatButton;
+        private TabPage astroTab;
+        private GroupBox objectGB;
+        private RichTextBox richTextBox2;
+        private ComboBox comboBox1;
     }
 }

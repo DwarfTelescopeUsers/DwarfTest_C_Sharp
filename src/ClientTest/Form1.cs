@@ -1,6 +1,6 @@
 using System.Windows.Forms.VisualStyles;
 using static ClientTest.ApiCaller;
-using static ClientTest.Telephoto;
+using static ClientTest.Common;
 
 namespace ClientTest
 {
@@ -10,8 +10,36 @@ namespace ClientTest
         public Form1()
         {
             InitializeComponent();
-            UpdateStatusBar();
+            CheckConfig();
+            
+            // UpdateStatusBar();
             // ToDo: Initialise UI based on existing camera settings
+        }
+
+        private void CheckConfig()
+        {
+            bool configured = false;
+            ConfigData cnfigData = new ConfigData();
+            (configured, cnfigData) = Common.CheckConfig();
+            EnableDisableTabs(configured, cnfigData);
+        }
+
+        private void EnableDisableTabs(bool configured, ConfigData cnfigData)
+        {
+            TPTab.Enabled = configured;
+            WATab.Enabled = configured;
+            astroTab.Enabled = configured;
+
+            if (configured)
+            {
+                ipTextBox.Text = cnfigData.IP;
+                latitudeTB.Text = cnfigData.Latitude.ToString();
+                longitudeTB.Text = cnfigData.Longitude.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Complete Configuration Data to continue");
+            }
         }
 
         private async void BtnWAOn_Click(object sender, EventArgs e)
@@ -105,7 +133,7 @@ namespace ClientTest
         }
 
         #region Telephoto Controls
-        private async void ExposureCB_SelectedIndexChanged(object sender, EventArgs e)
+        private async void TPExposureCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             double expValue = 0.0;
             AutoManual autoManual = AutoManual.Manual;
@@ -213,7 +241,43 @@ namespace ClientTest
             // ToDo: Add functionality once API is updated
         }
 
-        private void TPTrackBar_MouseDown(object sender, MouseEventArgs e)
+        #endregion
+
+        #region Wide Angle Controls
+        private async void WAExposureCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            double expValue = 0.0;
+            AutoManual autoManual = AutoManual.Manual;
+            if (WAExposureCB.SelectedIndex == 0)
+            {
+                autoManual = AutoManual.Auto;
+                WAExposureGB.BackColor = Color.Lime;
+            }
+            else
+            {
+                expValue = (Double)CalculateExposureValue(WAExposureCB.Text);
+                WAExposureGB.BackColor = Color.Transparent;
+
+            }
+            D2Message? message = await SetExposureMode(CameraId.WideAngle, autoManual);
+            if (autoManual == AutoManual.Manual)
+            {
+                message = await (SetExposureValue(CameraId.WideAngle, expValue));
+            }
+
+        }
+
+        private async void WAGainTB_ValueChanged(object sender, EventArgs e)
+        {
+            var gainValue = WAGainTB.Value;
+            WAGainLabel.Text = gainValue.ToString();
+            D2Message? message = await SetGainMode(CameraId.WideAngle, AutoManual.Manual);
+            message = await SetGainValue(CameraId.WideAngle, gainValue);
+        }
+        #endregion
+
+        #region Common to TP & WA
+        public static void TrackBar_MouseDown(object sender, MouseEventArgs e)
         {
             // Right click on the control acts a Reset
             if (e.Button == MouseButtons.Right)
@@ -234,24 +298,92 @@ namespace ClientTest
                             value = 180;
                             break;
                         }
+                    case "WAGainTB":
+                        {
+                            value = 64;
+                            break;
+                        }
                 }
                 ((TrackBar)sender).Value = value;
             }
         }
-
         #endregion
 
-        private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        #region Dev
+        private async void TPISPButton_Click(object sender, EventArgs e)
         {
-            AutoManual autoManual = AutoManual.Manual;
-            if (comboBox1.SelectedIndex == 0)
+            D2Message? message = await GetTelephotoWorkingState(CameraId.Telephoto);
+            string val = "";
+            if (message != null)
             {
-                autoManual = (AutoManual)3;
+                val = $"Exposure Mode: {message.ExpMode}{Environment.NewLine}";
+                val += $"Exposure Value: {message.Exp}{Environment.NewLine}";
+                val += $"Gain Mode: {message.GainMode}{Environment.NewLine}";
+                val += $"Gain Value: {message.Gain}{Environment.NewLine}";
+                val += $"White Balance Mode: {message.AwbMode}{Environment.NewLine}";
+                val += $"White Balance Value: {message.AwbCT}{Environment.NewLine}";
+                val += $"IR State: {message.IrState}{Environment.NewLine}";
+                val += $"Preview: {message.Quality}{Environment.NewLine}";
+                val += $"Brightness: {message.Brightness}{Environment.NewLine}";
+                val += $"Contrast: {message.Contrast}{Environment.NewLine}";
+                val += $"Hue: {message.Hue}{Environment.NewLine}";
+                val += $"Saturation: {message.Saturation}{Environment.NewLine}";
+                val += $"Sharpness: {message.Sharpness}{Environment.NewLine}";
             }
-            D2Message? message = await SetExposureMode(CameraId.WideAngle, autoManual);
+            else
+            {
+                val = "Message = null";
+            }
+            richTextBox1.Clear();
+            richTextBox1.Text = val;
+        }
+        private async void WAISPButton_Click(object sender, EventArgs e)
+        {
+            D2Message? message = await GetWideangleIspParameter(CameraId.WideAngle);
+            string val = "";
+            if (message != null)
+            {
+                val = $"Exposure Mode: {message.ExpMode}{Environment.NewLine}";
+                val += $"Exposure Value: {message.Exp}{Environment.NewLine}";
+                val += $"Gain Value: {message.Gain}{Environment.NewLine}";
+                val += $"White Balance Mode: {message.AwbMode}{Environment.NewLine}";
+                val += $"White Balance Value: {message.AwbCT}{Environment.NewLine}";
+                val += $"IR State: {message.IrState}{Environment.NewLine}";
+                val += $"Brightness: {message.Brightness}{Environment.NewLine}";
+                val += $"Contrast: {message.Contrast}{Environment.NewLine}";
+                val += $"Hue: {message.Hue}{Environment.NewLine}";
+                val += $"Saturation: {message.Saturation}{Environment.NewLine}";
+                val += $"Sharpness: {message.Sharpness}{Environment.NewLine}";
+            }
+            else
+            {
+                val = "Message = null";
+            }
+            richTextBox1.Clear();
+            richTextBox1.Text = val;
+        }
+        #endregion
+
+        #region Setup
+        private void enterLatButton_Click(object sender, EventArgs e)
+        {
+            var lat = ConvertLatitude(latitudeTB.Text);
+            latitudeTB.Text = lat.ToString();
         }
 
-        
+        private void enterLonButton_Click(object sender, EventArgs e)
+        {
+            var lon = ConvertLongitude(longitudeTB.Text);
+            longitudeTB.Text = lon.ToString();
+        }
+
+        private void saveDetailsButton_Click(object sender, EventArgs e)
+        {
+            Common.SaveConfig(latitudeTB.Text, longitudeTB.Text, ipTextBox.Text);
+            CheckConfig();
+        }
+        #endregion
+
+
     }
 }
-//this.vlcControl

@@ -35,7 +35,8 @@ namespace ClientTest
         public enum AutoManual
         {
             Auto = 0,
-            Manual = 1
+            Manual = 1,
+            WideAngleAuto = 3
         }
 
         public enum FocusMode
