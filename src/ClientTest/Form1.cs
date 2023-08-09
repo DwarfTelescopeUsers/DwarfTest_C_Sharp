@@ -1,3 +1,4 @@
+using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using static ClientTest.ApiCaller;
 using static ClientTest.Common;
@@ -6,12 +7,14 @@ namespace ClientTest
 {
     public partial class Form1 : Form
     {
+        private List<DSOData> _dsoList = new List<DSOData>();
+        private DSOData _dso = new DSOData();
 
         public Form1()
         {
             InitializeComponent();
             CheckConfig();
-            
+
             // UpdateStatusBar();
             // ToDo: Initialise UI based on existing camera settings
         }
@@ -384,6 +387,53 @@ namespace ClientTest
         }
         #endregion
 
+        private void ClearRTB(RichTextBox rtb)
+        {
+            rtb.Clear();
+            rtb.Update();
+        }
 
+        private void ObjectTypeCB_TextChanged(object sender, EventArgs e)
+        {
+            ObjectLB.Items.Clear();
+            _dsoList.Clear();
+            ClearRTB(ObjectDescriptionRTB);
+            switch (ObjectTypeCB.SelectedIndex)
+            {
+                case 0: // Dwarf 2 planet list
+                    {
+
+                        var planets = Enum.GetValues(typeof(Planets))
+                                    .Cast<Planets>()
+                                    .ToList();
+
+                        foreach (var planet in planets)
+                        {
+                            ObjectLB.Items.Add(planet);
+                        }
+                        break;
+                    }
+                case 1: // Messier objects from spreadsheet
+                    {
+                        _dsoList = ReadDSOData("Messier");
+                        foreach (DSOData dso in _dsoList)
+                        {
+                            ObjectLB.Items.Add(dso.Name);
+                        }
+                        break;
+                    }
+
+
+            }
+        }
+
+        private void ObjectLB_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ClearRTB(ObjectDescriptionRTB);
+            var selItem = ((ListBox)sender).SelectedItem.ToString();
+            var dso = _dsoList.Where(n => (n.Name.ToString() == selItem));
+            _dso = dso.First();
+            ObjectDescriptionRTB.Text = _dso.Description;
+        }
     }
 }

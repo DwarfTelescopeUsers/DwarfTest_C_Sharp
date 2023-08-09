@@ -1,10 +1,16 @@
-﻿using System;
+﻿using Excel = Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using static ClientTest.ApiCaller;
+using System.CodeDom;
+using Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
+using System.Data.Common;
 
 namespace ClientTest
 {
@@ -18,6 +24,20 @@ namespace ClientTest
             public string? IP { get; set; }
             public double Latitude { get; set; }
             public double Longitude { get; set; }
+        }
+
+
+        public struct DSOData
+        {
+            public string Name { get; set; }
+            public double RA { get; set; }
+            public double Dec { get; set; }
+            public string Description { get; set; }
+        }
+
+        static Common()
+        {
+            DSOData dsoList = new DSOData();
         }
 
         public static (bool,ConfigData) CheckConfig()
@@ -50,9 +70,9 @@ namespace ClientTest
             return value;
         }
        
-        public static void DoCorrection()
+        public async static void DoCorrection(ConfigData cnfigData)
         {
-
+            var response = await Correction(CameraId.Telephoto, cnfigData.Longitude,cnfigData.Latitude, DateTime.Now,DateTime.Now);
         }
 
         public static double ConvertLatitude(string latString)
@@ -159,6 +179,120 @@ namespace ClientTest
             };
 
             File.WriteAllText(_configFileName, JsonSerializer.Serialize(configData));
+
+        }
+
+        private static double ConvertRA(string RAString)
+        {
+            double ra = 0.0;
+            var raString = RAString.Replace(" ", string.Empty);
+            raString = RAString.Replace("h", " ");
+            raString = RAString.Replace("m", " ");
+            raString = RAString.Replace("s", string.Empty);
+            var raComponents = RAString.Split(" ");
+            var noComponents = raComponents.Length;
+            for (var idx = 0; idx < noComponents; idx++)
+            {
+                switch (idx)
+                {
+                    case 0:
+                        {
+                            ra = Double.Parse(raComponents[idx]);
+                            break;
+                        }
+                    case 1:
+                        {
+                            ra += Double.Parse(raComponents[idx]) / 60;
+                            break;
+                        }
+                    case 2:
+                        {
+                            ra += Double.Parse(raComponents[idx]) / 3600;
+                            break;
+                        }
+
+                }
+            }
+            return ra;
+        }
+
+        private static double ConvertDec(string DecString)
+        {
+            double dec = 0.0;
+            var decString = DecString.Replace(" ", string.Empty);
+            decString = DecString.Replace("°", " ");
+            decString = DecString.Replace("′", " ");
+            decString = DecString.Replace("″", string.Empty);
+            var decComponents = DecString.Split(" ");
+            var noComponents = decComponents.Length;
+            for (var idx = 0; idx < noComponents; idx++)
+            {
+                switch (idx)
+                {
+                    case 0:
+                        {
+                            dec = Double.Parse(decComponents[idx]);
+                            break;
+                        }
+                    case 1:
+                        {
+                            dec += Double.Parse(decComponents[idx]) / 60;
+                            break;
+                        }
+                    case 2:
+                        {
+                            dec += Double.Parse(decComponents[idx]) / 3600;
+                            break;
+                        }
+
+                }
+            }
+            return dec;
+        }
+
+        public static List<DSOData> ReadDSOData(string DSOType)
+        {
+            List<DSOData> dsoList = new List<DSOData>();
+            // Check for and load Config Data
+            if (File.Exists($"{DSOType}.csv"))
+            {
+                var allDSOData = File.ReadAllText($"{DSOType}.csv").Trim().Split(";");
+                foreach (var entry in allDSOData)
+                {
+                    var cmpnts = entry.Split(",");
+                    DSOData dso = new DSOData();
+                    for (var idx = 0; idx < cmpnts.Length; idx++)
+                    {
+                        switch (idx)
+                        {
+                            case 0:
+                                {
+                                    dso.Name = cmpnts[idx].Trim();
+                                    break;
+                                }
+                            case 1:
+                                {
+                                    dso.RA = Double.Parse(cmpnts[idx]);
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    dso.Dec = Double.Parse(cmpnts[idx]);
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    dso.Description = cmpnts[idx];
+                                    break;
+                                }
+                        }
+                    }
+
+                    dsoList.Add(dso);
+                }
+            }
+
+            return dsoList;
 
         }
 

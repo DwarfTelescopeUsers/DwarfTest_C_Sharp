@@ -76,14 +76,15 @@
             WAGainTB = new TrackBar();
             WAExposureGB = new GroupBox();
             WAExposureCB = new ComboBox();
+            astroTab = new TabPage();
+            objectGB = new GroupBox();
+            ObjectDescriptionRTB = new RichTextBox();
+            ObjectLB = new ListBox();
+            ObjectTypeCB = new ComboBox();
             tabPage1 = new TabPage();
             WAISPButton = new Button();
             TPISPButton = new Button();
             richTextBox1 = new RichTextBox();
-            astroTab = new TabPage();
-            objectGB = new GroupBox();
-            richTextBox2 = new RichTextBox();
-            comboBox1 = new ComboBox();
             groupBox1 = new GroupBox();
             BtnTPOff = new Button();
             BtnTPOn = new Button();
@@ -123,9 +124,9 @@
             WAGainGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)WAGainTB).BeginInit();
             WAExposureGB.SuspendLayout();
-            tabPage1.SuspendLayout();
             astroTab.SuspendLayout();
             objectGB.SuspendLayout();
+            tabPage1.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)vlcControl).BeginInit();
             statusStrip1.SuspendLayout();
@@ -166,8 +167,8 @@
             CamControlGB.Controls.Add(ConfigTab);
             CamControlGB.Controls.Add(TPTab);
             CamControlGB.Controls.Add(WATab);
-            CamControlGB.Controls.Add(tabPage1);
             CamControlGB.Controls.Add(astroTab);
+            CamControlGB.Controls.Add(tabPage1);
             CamControlGB.Location = new Point(12, 173);
             CamControlGB.Name = "CamControlGB";
             CamControlGB.SelectedIndex = 0;
@@ -640,6 +641,56 @@
             WAExposureCB.Text = "Auto";
             WAExposureCB.SelectedIndexChanged += WAExposureCB_SelectedIndexChanged;
             // 
+            // astroTab
+            // 
+            astroTab.Controls.Add(objectGB);
+            astroTab.Location = new Point(4, 24);
+            astroTab.Name = "astroTab";
+            astroTab.Size = new Size(415, 500);
+            astroTab.TabIndex = 4;
+            astroTab.Text = "Astrophotography";
+            astroTab.UseVisualStyleBackColor = true;
+            // 
+            // objectGB
+            // 
+            objectGB.Controls.Add(ObjectDescriptionRTB);
+            objectGB.Controls.Add(ObjectLB);
+            objectGB.Controls.Add(ObjectTypeCB);
+            objectGB.Location = new Point(3, 3);
+            objectGB.Name = "objectGB";
+            objectGB.Size = new Size(409, 243);
+            objectGB.TabIndex = 0;
+            objectGB.TabStop = false;
+            objectGB.Text = "Select Object";
+            // 
+            // ObjectDescriptionRTB
+            // 
+            ObjectDescriptionRTB.Location = new Point(142, 51);
+            ObjectDescriptionRTB.Name = "ObjectDescriptionRTB";
+            ObjectDescriptionRTB.Size = new Size(261, 184);
+            ObjectDescriptionRTB.TabIndex = 3;
+            ObjectDescriptionRTB.Text = "";
+            // 
+            // ObjectLB
+            // 
+            ObjectLB.FormattingEnabled = true;
+            ObjectLB.ItemHeight = 15;
+            ObjectLB.Location = new Point(6, 51);
+            ObjectLB.Name = "ObjectLB";
+            ObjectLB.Size = new Size(127, 184);
+            ObjectLB.TabIndex = 2;
+            ObjectLB.SelectedValueChanged += ObjectLB_SelectedValueChanged;
+            // 
+            // ObjectTypeCB
+            // 
+            ObjectTypeCB.FormattingEnabled = true;
+            ObjectTypeCB.Items.AddRange(new object[] { "Planets", "Messier Objects", "NGC Objects", "User Defined Objects" });
+            ObjectTypeCB.Location = new Point(6, 22);
+            ObjectTypeCB.Name = "ObjectTypeCB";
+            ObjectTypeCB.Size = new Size(127, 23);
+            ObjectTypeCB.TabIndex = 0;
+            ObjectTypeCB.TextChanged += ObjectTypeCB_TextChanged;
+            // 
             // tabPage1
             // 
             tabPage1.Controls.Add(WAISPButton);
@@ -679,43 +730,6 @@
             richTextBox1.Size = new Size(397, 444);
             richTextBox1.TabIndex = 0;
             richTextBox1.Text = "";
-            // 
-            // astroTab
-            // 
-            astroTab.Controls.Add(objectGB);
-            astroTab.Location = new Point(4, 24);
-            astroTab.Name = "astroTab";
-            astroTab.Size = new Size(415, 500);
-            astroTab.TabIndex = 4;
-            astroTab.Text = "Astrophotography";
-            astroTab.UseVisualStyleBackColor = true;
-            // 
-            // objectGB
-            // 
-            objectGB.Controls.Add(richTextBox2);
-            objectGB.Controls.Add(comboBox1);
-            objectGB.Location = new Point(3, 330);
-            objectGB.Name = "objectGB";
-            objectGB.Size = new Size(409, 167);
-            objectGB.TabIndex = 0;
-            objectGB.TabStop = false;
-            objectGB.Text = "Select Object";
-            // 
-            // richTextBox2
-            // 
-            richTextBox2.Location = new Point(6, 51);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(397, 110);
-            richTextBox2.TabIndex = 1;
-            richTextBox2.Text = "";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(6, 22);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(127, 23);
-            comboBox1.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -898,9 +912,9 @@
             WAGainGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)WAGainTB).EndInit();
             WAExposureGB.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
             astroTab.ResumeLayout(false);
             objectGB.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)vlcControl).EndInit();
             statusStrip1.ResumeLayout(false);
@@ -978,7 +992,8 @@
         private Button enterLatButton;
         private TabPage astroTab;
         private GroupBox objectGB;
-        private RichTextBox richTextBox2;
-        private ComboBox comboBox1;
+        private ComboBox ObjectTypeCB;
+        private RichTextBox ObjectDescriptionRTB;
+        private ListBox ObjectLB;
     }
 }
