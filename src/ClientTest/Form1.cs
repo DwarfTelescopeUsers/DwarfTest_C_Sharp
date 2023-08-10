@@ -414,9 +414,18 @@ namespace ClientTest
                         }
                         break;
                     }
-                case 1: // Messier objects from spreadsheet
+                case 1: // Messier objects from csv file
                     {
                         _dsoList = ReadDSOData("Messier");
+                        foreach (DSOData dso in _dsoList)
+                        {
+                            ObjectLB.Items.Add(dso.Name);
+                        }
+                        break;
+                    }
+                case 2: // NGC objects from spreadsheet
+                    {
+                        _dsoList = ReadDSOData("NGC");
                         foreach (DSOData dso in _dsoList)
                         {
                             ObjectLB.Items.Add(dso.Name);
@@ -440,6 +449,11 @@ namespace ClientTest
             {
                 gotoButton.Enabled = true;
             }
+        }
+
+        private void gotoButton_Click(object sender, EventArgs e)
+        {
+            // First perform the Correction
         }
     }
 }

@@ -1,768 +1,878 @@
-M1,5.575,22.0166666667,Other Names: NGC 1952 Crab Nebula
-TYPE: Supernova Remnant
+M1,5.575,+22.0166666666667,Magnitude: 8.4
+Other Names: NGC 1952 Crab Nebula
+Type: Supernova Remnant
 Constellation: Taurus
 Viewing Season: Winter
 Viewing Difficulty: Moderate
 Size: 6.0x4.0
 Distance (ly): 6300;
-M2,21.5583333333,0.8166666667,Other Names: NGC 7089
-TYPE: Globular Cluster
+M2,21.5583333333,-0.816666666666667,Magnitude: 6.5
+Other Names: NGC 7089
+Type: Globular Cluster
 Constellation: Aquarius
 Viewing Season: Autumn
 Viewing Difficulty: Easy
 Size: 12.9
 Distance (ly): 37;
-M3,13.7033333333,28.3833333333,Other Names: NGC 5272
-TYPE: Globular Cluster
+M3,13.7033333333,+28.3833333333333,Magnitude: 6.2
+Other Names: NGC 5272
+Type: Globular Cluster
 Constellation: Canes Venatici
 Viewing Season: Spring
 Viewing Difficulty: Easy
 Size: 16.2
 Distance (ly): 33900;
-M4,16.3933333333,-25.4666666667,Other Names: NGC 6121
-TYPE: Globular Cluster
+M4,16.3933333333,-26.5333333333333,Magnitude: 5.6
+Other Names: NGC 6121
+Type: Globular Cluster
 Constellation: Scorpius
 Viewing Season: Summer
 Viewing Difficulty: Hard
 Size: 26.3
 Distance (ly): 7200;
-M5,15.31,2.0833333333,Other Names: NGC 5904
-TYPE: Globular Cluster
+M5,15.31,+2.08333333333333,Magnitude: 5.6
+Other Names: NGC 5904
+Type: Globular Cluster
 Constellation: Serpens Caput
 Viewing Season: Summer
 Viewing Difficulty: Very Easy
 Size: 17.4
 Distance (ly): 24500;
-M6,17.6683333333,-31.7833333333,Other Names: NGC 6405 Butterfly Cluster
-TYPE: Open Cluster
+M6,17.6683333333,-32.2166666666667,Magnitude: 5.3
+Other Names: NGC 6405 Butterfly Cluster
+Type: Open Cluster
 Constellation: Scorpius
 Viewing Season: Summer
 Viewing Difficulty: Easy
 Size: 25
 Distance (ly): 2000;
-M7,17.8983333333,-33.1833333333,Other Names: NGC 6475 Ptolemy¹s Cluster
-TYPE: Open Cluster
+M7,17.8983333333,-34.8166666666667,Magnitude: 4.1
+Other Names: NGC 6475 Ptolemy's Cluster
+Type: Open Cluster
 Constellation: Scorpius
 Viewing Season: Summer
 Viewing Difficulty: Easy
 Size: 80
 Distance (ly): 800;
-M8,18.0633333333,-23.6166666667,Other Names: NGC 6523 Lagoon Nebula
-TYPE: Diffuse Nebula
+M8,18.0633333333,-24.3833333333333,Magnitude: 6
+Other Names: NGC 6523 Lagoon Nebula
+Type: Diffuse Nebula
 Constellation: Sagittarius
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 90x40
 Distance (ly): 5200;
-M9,17.32,-17.4833333333,Other Names: NGC 6333
-TYPE: Globular Cluster
+M9,17.32,-18.5166666666667,Magnitude: 7.7
+Other Names: NGC 6333
+Type: Globular Cluster
 Constellation: Ophiucus
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 9.3
 Distance (ly): 26700;
-M10,16.9516666667,-3.9,Other Names: NGC 6254
-TYPE: Globular Cluster
+M10,16.9516666667,-4.1,Magnitude: 6.6
+Other Names: NGC 6254
+Type: Globular Cluster
 Constellation: Ophiucus
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 15.1
 Distance (ly): 14400;
-M11,18.8516666667,-5.7333333333,Other Names: NGC 6705 Wild Duck Cluster
-TYPE: Open Cluster
+M11,18.8516666667,-6.26666666666667,Magnitude: 6.3
+Other Names: NGC 6705 Wild Duck Cluster
+Type: Open Cluster
 Constellation: Scutum
 Viewing Season: Summer
 Viewing Difficulty: Very Easy
 Size: 14
 Distance (ly): 6000;
-M12,16.7866666667,-0.05,Other Names: NGC 6218
-TYPE: Globular Cluster
+M12,16.7866666667,-1.95,Magnitude: 6.7
+Other Names: NGC 6218
+Type: Globular Cluster
 Constellation: Ophiucus
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 14.5
 Distance (ly): 16000;
-M13,16.695,36.4666666667,Other Names: NGC 6205 Hercules Globular Cluster
-TYPE: Globular Cluster
+M13,16.695,+36.4666666666667,Magnitude: 5.8
+Other Names: NGC 6205 Hercules Globular Cluster
+Type: Globular Cluster
 Constellation: Hercules
 Viewing Season: Summer
 Viewing Difficulty: Very Easy
 Size: 16.6
 Distance (ly): 22800;
-M14,17.6266666667,-2.75,Other Names: NGC 6402
-TYPE: Globular Cluster
+M14,17.6266666667,-3.25,Magnitude: 7.6
+Other Names: NGC 6402
+Type: Globular Cluster
 Constellation: Ophiucus
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 11.7
 Distance (ly): 27400;
-M15,21.5,12.1666666667,Other Names: NGC 7078
-TYPE: Globular Cluster
+M15,21.5,+12.1666666666667,Magnitude: 6.2
+Other Names: NGC 7078
+Type: Globular Cluster
 Constellation: Pegasus
 Viewing Season: Autumn
 Viewing Difficulty: Easy
 Size: 12.3
 Distance (ly): 33600;
-M16,18.3133333333,-12.2166666667,Other Names: NGC 6611 Eagle Nebula Cluster
-TYPE: Open Cluster
+M16,18.3133333333,-13.7833333333333,Magnitude: 6.4
+Other Names: NGC 6611 Eagle Nebula Cluster
+Type: Open Cluster
 Constellation: Serpens Claudia
 Viewing Season: Summer
 Viewing Difficulty: Easy
 Size: 7
 Distance (ly): 7000;
-M17,18.3466666667,-15.8166666667,Other Names: NGC 6618 Omega  Swan  Horseshoe Nebula
-TYPE: Diffuse Nebula
+M17,18.3466666667,-16.1833333333333,Magnitude: 7
+Other Names: NGC 6618 Omega, Swan, Horseshoe Nebula
+Type: Diffuse Nebula
 Constellation: Sagittarius
 Viewing Season: Summer
 Viewing Difficulty: Easy
 Size: 11
 Distance (ly): 5000;
-M18,18.3316666667,-16.8666666667,Other Names: NGC 6613
-TYPE: Open Cluster
+M18,18.3316666667,-17.1333333333333,Magnitude: 7.5
+Other Names: NGC 6613
+Type: Open Cluster
 Constellation: Sagittarius
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 9
 Distance (ly): 4900;
-M19,17.0433333333,-25.7333333333,Other Names: NGC 6273
-TYPE: Globular Cluster
+M19,17.0433333333,-26.2666666666667,Magnitude: 6.8
+Other Names: NGC 6273
+Type: Globular Cluster
 Constellation: Ophiucus
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 13.5
 Distance (ly): 27100;
-M20,18.0383333333,-22.9666666667,Other Names: NGC 6514 Trifid Nebula
-TYPE: Diffuse Nebula
+M20,18.0383333333,-23.0333333333333,Magnitude: 9
+Other Names: NGC 6514 Trifid Nebula
+Type: Diffuse Nebula
 Constellation: Sagittarius
 Viewing Season: Summer
 Viewing Difficulty: Very Hard
 Size: 28
 Distance (ly): 5200;
-M21,18.0766666667,-21.5,Other Names: NGC 6531
-TYPE: Open Cluster
+M21,18.0766666667,-22.5,Magnitude: 6.5
+Other Names: NGC 6531
+Type: Open Cluster
 Constellation: Sagittarius
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 13
 Distance (ly): 4250;
-M22,18.6066666667,-22.1,Other Names: NGC 6656
-TYPE: Globular Cluster
+M22,18.6066666667,-23.9,Magnitude: 5.1
+Other Names: NGC 6656
+Type: Globular Cluster
 Constellation: Sagittarius
 Viewing Season: Summer
 Viewing Difficulty: Very Easy
 Size: 24
 Distance (ly): 10100;
-M23,17.9466666667,-18.9833333333,Other Names: NGC 6494
-TYPE: Open Cluster
+M23,17.9466666667,-19.0166666666667,Magnitude: 6.9
+Other Names: NGC 6494
+Type: Open Cluster
 Constellation: Sagittarius
 Viewing Season: Summer
 Viewing Difficulty: Easy
 Size: 27
 Distance (ly): 2150;
-M24,18.3066666667,-17.5833333333,Other Names: NGC 6603 Milky Way Patch
-TYPE: Star Cloud
+M24,18.3066666667,-18.4166666666667,Magnitude: 4.6
+Other Names: NGC 6603 Milky Way Patch
+Type: Star Cloud
 Constellation: Sagittarius
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 90
 Distance (ly): 10000;
-M25,18.5283333333,-18.7666666667,Other Names: IC 4725
-TYPE: Open Cluster
+M25,18.5283333333,-19.2333333333333,Magnitude: 6.5
+Other Names: IC 4725
+Type: Open Cluster
 Constellation: Sagittarius
 Viewing Season: Summer
 Viewing Difficulty: Easy
 Size: 40
 Distance (ly): 2000;
-M26,18.7533333333,-8.6,Other Names: NGC 6694
-TYPE: Open Cluster
+M26,18.7533333333,-9.4,Magnitude: 8
+Other Names: NGC 6694
+Type: Open Cluster
 Constellation: Scutum
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 15
 Distance (ly): 5000;
-M27,19.9933333333,22.7166666667,Other Names: NGC 6853 Dumbbell Nebula
-TYPE: Planetary Nebula
+M27,19.9933333333,+22.7166666666667,Magnitude: 7.4
+Other Names: NGC 6853 Dumbbell Nebula
+Type: Planetary Nebula
 Constellation: Vulpecula
 Viewing Season: Summer
 Viewing Difficulty: Easy
 Size: 8.0x5.7
 Distance (ly): 1250;
-M28,18.4083333333,-23.1333333333,Other Names: NGC 6626
-TYPE: Globular Cluster
+M28,18.4083333333,-24.8666666666667,Magnitude: 6.8
+Other Names: NGC 6626
+Type: Globular Cluster
 Constellation: Sagittarius
 Viewing Season: Summer
 Viewing Difficulty: Easy
 Size: 11.2
 Distance (ly): 17900;
-M29,20.3983333333,38.5333333333,Other Names: NGC 6913
-TYPE: Open Cluster
+M29,20.3983333333,+38.5333333333333,Magnitude: 7.1
+Other Names: NGC 6913
+Type: Open Cluster
 Constellation: Cygnus
 Viewing Season: Summer
 Viewing Difficulty: Easy
 Size: 7
 Distance (ly): 4000;
-M30,21.6733333333,-22.8166666667,Other Names: NGC 7099
-TYPE: Globular Cluster
+M30,21.6733333333,-23.1833333333333,Magnitude: 7.2
+Other Names: NGC 7099
+Type: Globular Cluster
 Constellation: Capricornus
 Viewing Season: Autumn
 Viewing Difficulty: Easy
 Size: 11
 Distance (ly): 24800;
-M31,0.7116666667,41.2666666667,Other Names: NGC 224 Andromeda Galaxy
-TYPE: Spiral Galaxy
+M31,0.7116666667,+41.2666666666667,Magnitude: 3.4
+Other Names: NGC 224 Andromeda Galaxy
+Type: Spiral Galaxy
 Constellation: Andromeda
 Viewing Season: Autumn
 Viewing Difficulty: Easy
 Size: 178x63
 Distance (ly): 2900000;
-M32,0.7116666667,40.8666666667,Other Names: NGC 221 Satellite of M31
-TYPE: Elliptical Galaxy
+M32,0.7116666667,+40.8666666666667,Magnitude: 8.1
+Other Names: NGC 221 Satellite of M31
+Type: Elliptical Galaxy
 Constellation: Andromeda
 Viewing Season: Autumn
 Viewing Difficulty: Easy
 Size: 8x6
 Distance (ly): 2900000;
-M33,1.565,30.65,Other Names: NGC 598 Triangulum/Pinwheel Galaxy
-TYPE: Spiral Galaxy
+M33,1.565,+30.65,Magnitude: 5.7
+Other Names: NGC 598 Triangulum/Pinwheel Galaxy
+Type: Spiral Galaxy
 Constellation: Triangulum
 Viewing Season: Autumn
 Viewing Difficulty: Hard
 Size: 73x45
 Distance (ly): 3000000;
-M34,2.7,42.7833333333,Other Names: NGC 1039
-TYPE: Open Cluster
+M34,2.7,+42.7833333333333,Magnitude: 5.5
+Other Names: NGC 1039
+Type: Open Cluster
 Constellation: Perseus
 Viewing Season: Autumn
 Viewing Difficulty: Easy
 Size: 35
 Distance (ly): 1400;
-M35,6.1483333333,24.3333333333,Other Names: NGC 2168
-TYPE: Open Cluster
+M35,6.1483333333,+24.3333333333333,Magnitude: 5.3
+Other Names: NGC 2168
+Type: Open Cluster
 Constellation: Gemini
 Viewing Season: Winter
 Viewing Difficulty: Very Easy
 Size: 28
 Distance (ly): 2800;
-M36,5.6016666667,34.1333333333,Other Names: NGC 1960
-TYPE: Open Cluster
+M36,5.6016666667,+34.1333333333333,Magnitude: 6.3
+Other Names: NGC 1960
+Type: Open Cluster
 Constellation: Auriga
 Viewing Season: Winter
 Viewing Difficulty: Easy
 Size: 12
 Distance (ly): 4100;
-M37,5.8733333333,32.55,Other Names: NGC 2099
-TYPE: Open Cluster
+M37,5.8733333333,+32.55,Magnitude: 6.2
+Other Names: NGC 2099
+Type: Open Cluster
 Constellation: Auriga
 Viewing Season: Winter
 Viewing Difficulty: Easy
 Size: 24
 Distance (ly): 4400;
-M38,5.4783333333,35.8333333333,Other Names: NGC 1912
-TYPE: Open Cluster
+M38,5.4783333333,+35.8333333333333,Magnitude: 7.4
+Other Names: NGC 1912
+Type: Open Cluster
 Constellation: Auriga
 Viewing Season: Winter
 Viewing Difficulty: Easy
 Size: 21
 Distance (ly): 4200;
-M39,21.5366666667,48.4333333333,Other Names: NGC 7092
-TYPE: Open Cluster
+M39,21.5366666667,+48.4333333333333,Magnitude: 5.2
+Other Names: NGC 7092
+Type: Open Cluster
 Constellation: Cygnus
 Viewing Season: Autumn
 Viewing Difficulty: Easy
 Size: 32
 Distance (ly): 825;
-M40,12.37,58.0833333333,Other Names: Winecke 4
-TYPE: Double Star
+M40,12.37,+58.0833333333333,Magnitude: 9.3
+Other Names: Winecke 4
+Type: Double Star
 Constellation: Ursa Major
 Viewing Season: Spring
 Viewing Difficulty: Easy
 Size: 49
 Distance (ly): 510;
-M41,6.7833333333,-19.2666666667,Other Names: NGC 2287
-TYPE: Open Cluster
+M41,6.7833333333,-20.7333333333333,Magnitude: 4.6
+Other Names: NGC 2287
+Type: Open Cluster
 Constellation: Canis Major
 Viewing Season: Winter
 Viewing Difficulty: Easy
 Size: 38
 Distance (ly): 2300;
-M42,5.59,-4.55,Other Names: NGC 1976 Great Orion Nebula
-TYPE: Diffuse Nebula
+M42,5.59,-5.45,Magnitude: 4
+Other Names: NGC 1976 Great Orion Nebula
+Type: Diffuse Nebula
 Constellation: Orion
 Viewing Season: Winter
 Viewing Difficulty: Very Easy
 Size: 85x60
 Distance (ly): 1600;
-M43,5.5933333333,-4.7333333333,Other Names: NGC 1982 de Mairan¹s Nebula
-TYPE: Diffuse Nebula
+M43,5.5933333333,-5.26666666666667,Magnitude: 9
+Other Names: NGC 1982 de Mairan's Nebula
+Type: Diffuse Nebula
 Constellation: Orion
 Viewing Season: Winter
 Viewing Difficulty: Easy
 Size: 20x15
 Distance (ly): 1600;
-M44,8.6683333333,19.9833333333,Other Names: NGC 2632 Beehive Cluster (Praesepe)
-TYPE: Open Cluster
+M44,8.6683333333,+19.9833333333333,Magnitude: 3.7
+Other Names: NGC 2632 Beehive Cluster (Praesepe)
+Type: Open Cluster
 Constellation: Cancer
 Viewing Season: Winter
 Viewing Difficulty: Easy
 Size: 95
 Distance (ly): 577;
-M45,3.7833333333,24.12,Other Names: Pleiades  Subaru  Seven Sisters
-TYPE: Open Cluster
+M45,3.7833333333,+24.12,Magnitude: 1.6
+Other Names: Pleiades, Subaru, Seven Sisters
+Type: Open Cluster
 Constellation: Taurus
 Viewing Season: Winter
 Viewing Difficulty: Very Easy
 Size: 110
 Distance (ly): 380;
-M46,7.6966666667,-13.1833333333,Other Names: NGC 2437
-TYPE: Open Cluster
+M46,7.6966666667,-14.8166666666667,Magnitude: 6
+Other Names: NGC 2437
+Type: Open Cluster
 Constellation: Puppis
 Viewing Season: Winter
 Viewing Difficulty: Easy
 Size: 27
 Distance (ly): 5400;
-M47,7.61,-13.5,Other Names: NGC 2422
-TYPE: Open Cluster
+M47,7.61,-14.5,Magnitude: 5.2
+Other Names: NGC 2422
+Type: Open Cluster
 Constellation: Puppis
 Viewing Season: Winter
 Viewing Difficulty: Easy
 Size: 30
 Distance (ly): 1600;
-M48,8.23,-4.2,Other Names: NGC 2548
-TYPE: Open Cluster
+M48,8.23,-5.8,Magnitude: 5.5
+Other Names: NGC 2548
+Type: Open Cluster
 Constellation: Hydra
 Viewing Season: Winter
 Viewing Difficulty: Easy
 Size: 54
 Distance (ly): 1500;
-M49,12.4966666667,8,Other Names: NGC 4472
-TYPE: Elliptical Galaxy
+M49,12.4966666667,+8,Magnitude: 8.4
+Other Names: NGC 4472
+Type: Elliptical Galaxy
 Constellation: Virgo
 Viewing Season: Spring
 Viewing Difficulty: Moderate
 Size: 9x7.5
 Distance (ly): 60000000;
-M50,7.0533333333,-7.6666666667,Other Names: NGC 2323
-TYPE: Open Cluster
+M50,7.0533333333,-8.33333333333333,Magnitude: 6.3
+Other Names: NGC 2323
+Type: Open Cluster
 Constellation: Monocerus
 Viewing Season: Winter
 Viewing Difficulty: Easy
 Size: 16
 Distance (ly): 3000;
-M51,13.4983333333,47.2,Other Names: NGC 5194 Whirlpool Galaxy
-TYPE: Spiral Galaxy
+M51,13.4983333333,+47.2,Magnitude: 8.4
+Other Names: NGC 5194 Whirlpool Galaxy
+Type: Spiral Galaxy
 Constellation: Canes Venatici
 Viewing Season: Spring
 Viewing Difficulty: Moderate
 Size: 11x7
 Distance (ly): 37000000;
-M52,23.4033333333,61.5833333333,Other Names: NGC 7654
-TYPE: Open Cluster
+M52,23.4033333333,+61.5833333333333,Magnitude: 7.3
+Other Names: NGC 7654
+Type: Open Cluster
 Constellation: Cassiopeia
 Viewing Season: Autumn
 Viewing Difficulty: Easy
 Size: 13
 Distance (ly): 5000;
-M53,13.215,18.1666666667,Other Names: NGC 5024
-TYPE: Globular Cluster
+M53,13.215,+18.1666666666667,Magnitude: 7.6
+Other Names: NGC 5024
+Type: Globular Cluster
 Constellation: Coma Berenices
 Viewing Season: Spring
 Viewing Difficulty: Easy
 Size: 12.6
 Distance (ly): 56400;
-M54,18.9183333333,-29.5166666667,Other Names: NGC 6715
-TYPE: Globular Cluster
+M54,18.9183333333,-30.4833333333333,Magnitude: 7.6
+Other Names: NGC 6715
+Type: Globular Cluster
 Constellation: Sagittarius
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 9.1
 Distance (ly): 82800;
-M55,19.6666666667,-29.0333333333,Other Names: NGC 6809
-TYPE: Globular Cluster
+M55,19.6666666667,-30.9666666666667,Magnitude: 6.3
+Other Names: NGC 6809
+Type: Globular Cluster
 Constellation: Sagittarius
 Viewing Season: Summer
 Viewing Difficulty: Hard
 Size: 19
 Distance (ly): 16600;
-M56,19.2766666667,30.1833333333,Other Names: NGC 6779
-TYPE: Globular Cluster
+M56,19.2766666667,+30.1833333333333,Magnitude: 8.3
+Other Names: NGC 6779
+Type: Globular Cluster
 Constellation: Lyra
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 7.1
 Distance (ly): 31600;
-M57,18.8933333333,33.0333333333,Other Names: NGC 6720 Ring Nebula
-TYPE: Planetary Nebula
+M57,18.8933333333,+33.0333333333333,Magnitude: 8.8
+Other Names: NGC 6720 Ring Nebula
+Type: Planetary Nebula
 Constellation: Lyra
 Viewing Season: Summer
 Viewing Difficulty: Easy
 Size: 1.4x1
 Distance (ly): 4100;
-M58,12.6283333333,11.8166666667,Other Names: NGC 4579
-TYPE: Spiral Galaxy
+M58,12.6283333333,+11.8166666666667,Magnitude: 9.7
+Other Names: NGC 4579
+Type: Spiral Galaxy
 Constellation: Virgo
 Viewing Season: Spring
 Viewing Difficulty: Moderate
 Size: 5.5x4.5
 Distance (ly): 60000000;
-M59,12.7,11.65,Other Names: NGC 4621
-TYPE: Elliptical Galaxy
+M59,12.7,+11.65,Magnitude: 9.6
+Other Names: NGC 4621
+Type: Elliptical Galaxy
 Constellation: Virgo
 Viewing Season: Spring
 Viewing Difficulty: Hard
 Size: 5x3.5
 Distance (ly): 60000000;
-M60,12.7283333333,11.55,Other Names: NGC 4649
-TYPE: Elliptical Galaxy
+M60,12.7283333333,+11.55,Magnitude: 8.8
+Other Names: NGC 4649
+Type: Elliptical Galaxy
 Constellation: Virgo
 Viewing Season: Spring
 Viewing Difficulty: Moderate
 Size: 7x6
 Distance (ly): 60000000;
-M61,12.365,4.4666666667,Other Names: NGC 4303
-TYPE: Spiral Galaxy
+M61,12.365,+4.46666666666667,Magnitude: 9.7
+Other Names: NGC 4303
+Type: Spiral Galaxy
 Constellation: Virgo
 Viewing Season: Spring
 Viewing Difficulty: Hard
 Size: 6x5.5
 Distance (ly): 60000000;
-M62,17.02,-29.8833333333,Other Names: NGC 6266
-TYPE: Globular Cluster
+M62,17.02,-30.1166666666667,Magnitude: 6.5
+Other Names: NGC 6266
+Type: Globular Cluster
 Constellation: Ophiucus
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 14.1
 Distance (ly): 21500;
-M63,13.2633333333,42.0333333333,Other Names: NGC 5055 Sunflower Galaxy
-TYPE: Spiral Galaxy
+M63,13.2633333333,+42.0333333333333,Magnitude: 8.6
+Other Names: NGC 5055 Sunflower Galaxy
+Type: Spiral Galaxy
 Constellation: Canes Venatici
 Viewing Season: Spring
 Viewing Difficulty: Moderate
 Size: 10x6
 Distance (ly): 37000000;
-M64,12.945,21.6833333333,Other Names: NGC 4826 Blackeye Galaxy
-TYPE: Spiral Galaxy
+M64,12.945,+21.6833333333333,Magnitude: 8.5
+Other Names: NGC 4826 Blackeye Galaxy
+Type: Spiral Galaxy
 Constellation: Coma Berenices
 Viewing Season: Spring
 Viewing Difficulty: Moderate
 Size: 9.3x5.4
 Distance (ly): 19000000;
-M65,11.315,13.0833333333,Other Names: NGC 3623
-TYPE: Spiral Galaxy
+M65,11.315,+13.0833333333333,Magnitude: 9.3
+Other Names: NGC 3623
+Type: Spiral Galaxy
 Constellation: Leo
 Viewing Season: Spring
 Viewing Difficulty: Moderate
 Size: 8x1.5
 Distance (ly): 35000000;
-M66,11.3366666667,12.9833333333,Other Names: NGC 3627
-TYPE: Spiral Galaxy
+M66,11.3366666667,+12.9833333333333,Magnitude: 8.9
+Other Names: NGC 3627
+Type: Spiral Galaxy
 Constellation: Leo
 Viewing Season: Spring
 Viewing Difficulty: Easy
 Size: 8x2.5
 Distance (ly): 35000000;
-M67,8.84,11.8166666667,Other Names: NGC 2682
-TYPE: Open Cluster
+M67,8.84,+11.8166666666667,Magnitude: 6.1
+Other Names: NGC 2682
+Type: Open Cluster
 Constellation: Cancer
 Viewing Season: Winter
 Viewing Difficulty: Easy
 Size: 30
 Distance (ly): 2700;
-M68,12.6583333333,-25.25,Other Names: NGC 4590
-TYPE: Globular Cluster
+M68,12.6583333333,-26.75,Magnitude: 7.8
+Other Names: NGC 4590
+Type: Globular Cluster
 Constellation: Hydra
 Viewing Season: Spring
 Viewing Difficulty: Very Hard
 Size: 12
 Distance (ly): 33300;
-M69,18.5233333333,-31.65,Other Names: NGC 6637
-TYPE: Globular Cluster
+M69,18.5233333333,-32.35,Magnitude: 7.6
+Other Names: NGC 6637
+Type: Globular Cluster
 Constellation: Sagittarius
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 7.1
 Distance (ly): 26700;
-M70,18.72,-31.7,Other Names: NGC 6681
-TYPE: Globular Cluster
+M70,18.72,-32.3,Magnitude: 7.9
+Other Names: NGC 6681
+Type: Globular Cluster
 Constellation: Sagittarius
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 7.8
 Distance (ly): 28000;
-M71,19.8966666667,18.7833333333,Other Names: NGC 6838
-TYPE: Globular Cluster
+M71,19.8966666667,+18.7833333333333,Magnitude: 8.3
+Other Names: NGC 6838
+Type: Globular Cluster
 Constellation: Sagitta
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 7.2
 Distance (ly): 11700;
-M72,20.8916666667,-11.4666666667,Other Names: NGC 6981
-TYPE: Globular Cluster
+M72,20.8916666667,-12.5333333333333,Magnitude: 9.3
+Other Names: NGC 6981
+Type: Globular Cluster
 Constellation: Aquarius
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 5.9
 Distance (ly): 52800;
-M73,20.9833333333,-11.3666666667,Other Names: NGC 6994 Group of 4 stars
-TYPE: Group/Asterism
+M73,20.9833333333,-12.6333333333333,Magnitude: 9
+Other Names: NGC 6994 Group of 4 stars
+Type: Group/Asterism
 Constellation: Aquarius
 Viewing Season: Summer
 Viewing Difficulty: Hard
 Size: 2.8
 Distance (ly): 2000;
-M74,1.6116666667,15.7833333333,Other Names: NGC 628
-TYPE: Spiral Galaxy
+M74,1.6116666667,+15.7833333333333,Magnitude: 9.4
+Other Names: NGC 628
+Type: Spiral Galaxy
 Constellation: Pisces
 Viewing Season: Autumn
 Viewing Difficulty: Very Hard
 Size: 10.2x9.5
 Distance (ly): 35000000;
-M75,20.1016666667,-20.0833333333,Other Names: NGC 6864
-TYPE: Globular Cluster
+M75,20.1016666667,-21.9166666666667,Magnitude: 8.5
+Other Names: NGC 6864
+Type: Globular Cluster
 Constellation: Sagittarius
 Viewing Season: Summer
 Viewing Difficulty: Moderate
 Size: 6
 Distance (ly): 57700;
-M76,1.705,51.5666666667,Other Names: NGC 650 Little Dumbell  Cork  Butterfly Nebula
-TYPE: Planetary Nebula
+M76,1.705,+51.5666666666667,Magnitude: 10.1
+Other Names: NGC 650 Little Dumbell, Cork, Butterfly Nebula
+Type: Planetary Nebula
 Constellation: Perseus
 Viewing Season: Autumn
 Viewing Difficulty: Moderate
 Size: 2.7x1.8
 Distance (ly): 3400;
-M77,2.7116666667,0.0166666667,Other Names: NGC 1068 Cetus A
-TYPE: Spiral Galaxy
+M77,2.7116666667,+0.0166666666666667,Magnitude: 8.9
+Other Names: NGC 1068 Cetus A
+Type: Spiral Galaxy
 Constellation: Cetus
 Viewing Season: Autumn
 Viewing Difficulty: Moderate
 Size: 7x6
 Distance (ly): 60000000;
-M78,5.7783333333,0.05,Other Names: NGC 2068
-TYPE: Diffuse Nebula
+M78,5.7783333333,+0.05,Magnitude: 8.3
+Other Names: NGC 2068
+Type: Diffuse Nebula
 Constellation: Orion
 Viewing Season: Winter
 Viewing Difficulty: Moderate
 Size: 8x6
 Distance (ly): 1600;
-M79,5.4083333333,-23.45,Other Names: NGC 1904
-TYPE: Globular Cluster
+M79,5.4083333333,-24.55,Magnitude: 7.7
+Other Names: NGC 1904
+Type: Globular Cluster
 Constellation: Lepus
 Viewing Season: Winter
 Viewing Difficulty: Moderate
 Size: 8.7
 Distance (ly): 41100;
-M80,16.2833333333,-21.0166666667,Other Names: NGC 6093
-TYPE: Globular Cluster
+M80,16.2833333333,-22.9833333333333,Magnitude: 7.3
+Other Names: NGC 6093
+Type: Globular Cluster
 Constellation: Scorpius
 Viewing Season: Summer
 Viewing Difficulty: Easy
 Size: 8.9
 Distance (ly): 27400;
-M81,9.9266666667,69.0666666667,Other Names: NGC 3031 Bode¹s Galaxy
-TYPE: Spiral Galaxy
+M81,9.9266666667,+69.0666666666667,Magnitude: 6.9
+Other Names: NGC 3031 Bode's Galaxy
+Type: Spiral Galaxy
 Constellation: Ursa Major
 Viewing Season: Spring
 Viewing Difficulty: Easy
 Size: 21x10
 Distance (ly): 12000000;
-M82,9.93,69.6833333333,Other Names: NGC 3034 Cigar Galaxy
-TYPE: Irregular Galaxy
+M82,9.93,+69.6833333333333,Magnitude: 8.4
+Other Names: NGC 3034 Cigar Galaxy
+Type: Irregular Galaxy
 Constellation: Ursa Major
 Viewing Season: Spring
 Viewing Difficulty: Easy
 Size: 9.x4
 Distance (ly): 12000000;
-M83,13.6166666667,-28.1333333333,Other Names: NGC 5236 Southern Pinwheel Galaxy
-TYPE: Spiral Galaxy
+M83,13.6166666667,-29.8666666666667,Magnitude: 7.6
+Other Names: NGC 5236 Southern Pinwheel Galaxy
+Type: Spiral Galaxy
 Constellation: Hydra
 Viewing Season: Spring
 Viewing Difficulty: Hard
 Size: 11x10
 Distance (ly): 15000000;
-M84,12.4183333333,12.8833333333,Other Names: NGC 4374
-TYPE: Lenticular (S0) Galaxy
+M84,12.4183333333,+12.8833333333333,Magnitude: 9.1
+Other Names: NGC 4374
+Type: Lenticular (S0) Galaxy
 Constellation: Virgo
 Viewing Season: Spring
 Viewing Difficulty: Moderate
 Size: 5
 Distance (ly): 60000000;
-M85,12.4233333333,18.1833333333,Other Names: NGC 4382
-TYPE: Lenticular (S0) Galaxy
+M85,12.4233333333,+18.1833333333333,Magnitude: 9.1
+Other Names: NGC 4382
+Type: Lenticular (S0) Galaxy
 Constellation: Coma Berenices
 Viewing Season: Spring
 Viewing Difficulty: Moderate
 Size: 7.1x5.2
 Distance (ly): 60000000;
-M86,12.4366666667,12.95,Other Names: NGC 4406
-TYPE: Lenticular (S0) Galaxy
+M86,12.4366666667,+12.95,Magnitude: 8.9
+Other Names: NGC 4406
+Type: Lenticular (S0) Galaxy
 Constellation: Virgo
 Viewing Season: Spring
 Viewing Difficulty: Moderate
 Size: 7.5x5.5
 Distance (ly): 60000000;
-M87,12.5133333333,12.4,Other Names: NGC 4486 Virgo A
-TYPE: Elliptical Galaxy
+M87,12.5133333333,+12.4,Magnitude: 8.6
+Other Names: NGC 4486 Virgo A
+Type: Elliptical Galaxy
 Constellation: Virgo
 Viewing Season: Spring
 Viewing Difficulty: Moderate
 Size: 7
 Distance (ly): 60000000;
-M88,12.5333333333,14.4166666667,Other Names: NGC 4501
-TYPE: Spiral Galaxy
+M88,12.5333333333,+14.4166666666667,Magnitude: 9.6
+Other Names: NGC 4501
+Type: Spiral Galaxy
 Constellation: Coma Berenices
 Viewing Season: Spring
 Viewing Difficulty: Moderate
 Size: 7x4
 Distance (ly): 60000000;
-M89,12.595,12.55,Other Names: NGC 4552
-TYPE: Elliptical Galaxy
+M89,12.595,+12.55,Magnitude: 9.8
+Other Names: NGC 4552
+Type: Elliptical Galaxy
 Constellation: Virgo
 Viewing Season: Spring
 Viewing Difficulty: Moderate
 Size: 4
 Distance (ly): 60000000;
-M90,12.6133333333,13.1666666667,Other Names: NGC 4569
-TYPE: Spiral Galaxy
+M90,12.6133333333,+13.1666666666667,Magnitude: 9.5
+Other Names: NGC 4569
+Type: Spiral Galaxy
 Constellation: Virgo
 Viewing Season: Spring
 Viewing Difficulty: Hard
 Size: 9.5x4.5
 Distance (ly): 60000000;
-M91,12.59,14.5,Other Names: NGC 4548
-TYPE: Spiral Galaxy
+M91,12.59,+14.5,Magnitude: 10.2
+Other Names: NGC 4548
+Type: Spiral Galaxy
 Constellation: Coma Berenices
 Viewing Season: Spring
 Viewing Difficulty: Very Hard
 Size: 5.4x4.4
 Distance (ly): 60000000;
-M92,17.285,43.1333333333,Other Names: NGC 6341
-TYPE: Globular Cluster
+M92,17.285,+43.1333333333333,Magnitude: 6.4
+Other Names: NGC 6341
+Type: Globular Cluster
 Constellation: Hercules
 Viewing Season: summer
 Viewing Difficulty: Easy
 Size: 11.2
 Distance (ly): 26400;
-M93,7.7433333333,-22.1333333333,Other Names: NGC 2447
-TYPE: Open Cluster
+M93,7.7433333333,-23.8666666666667,Magnitude: 6
+Other Names: NGC 2447
+Type: Open Cluster
 Constellation: Puppis
 Viewing Season: winter
 Viewing Difficulty: Easy
 Size: 22
 Distance (ly): 3600;
-M94,12.8483333333,41.1166666667,Other Names: NGC 4736
-TYPE: Spiral Galaxy
+M94,12.8483333333,+41.1166666666667,Magnitude: 8.2
+Other Names: NGC 4736
+Type: Spiral Galaxy
 Constellation: Canes Venatici
 Viewing Season: Spring
 Viewing Difficulty: Moderate
 Size: 7x3
 Distance (ly): 14500000;
-M95,10.7333333333,11.7,Other Names: NGC 3351
-TYPE: Spiral Galaxy
+M95,10.7333333333,+11.7,Magnitude: 9.7
+Other Names: NGC 3351
+Type: Spiral Galaxy
 Constellation: Leo
 Viewing Season: Spring
 Viewing Difficulty: Hard
 Size: 4.4x3.3
 Distance (ly): 38000000;
-M96,10.78,11.8166666667,Other Names: NGC 3368
-TYPE: Spiral Galaxy
+M96,10.78,+11.8166666666667,Magnitude: 9.2
+Other Names: NGC 3368
+Type: Spiral Galaxy
 Constellation: Leo
 Viewing Season: Spring
 Viewing Difficulty: Moderate
 Size: 6x4
 Distance (ly): 38000000;
-M97,11.2466666667,55.0166666667,Other Names: NGC 3587 Owl Nebula
-TYPE: Planetary Nebula
+M97,11.2466666667,+55.0166666666667,Magnitude: 9.9
+Other Names: NGC 3587 Owl Nebula
+Type: Planetary Nebula
 Constellation: Ursa Major
 Viewing Season: Spring
 Viewing Difficulty: Very Hard
 Size: 3.4x3.3
 Distance (ly): 2600;
-M98,12.23,14.9,Other Names: NGC 4192
-TYPE: Spiral Galaxy
+M98,12.23,+14.9,Magnitude: 10.1
+Other Names: NGC 4192
+Type: Spiral Galaxy
 Constellation: Coma Berenices
 Viewing Season: Spring
 Viewing Difficulty: Very Hard
 Size: 9.5x3.2
 Distance (ly): 60000000;
-M99,12.3133333333,14.4166666667,Other Names: NGC 4254
-TYPE: Spiral Galaxy
+M99,12.3133333333,+14.4166666666667,Magnitude: 9.9
+Other Names: NGC 4254
+Type: Spiral Galaxy
 Constellation: Coma Berenices
 Viewing Season: Spring
 Viewing Difficulty: Hard
 Size: 5.4x4.8
 Distance (ly): 60000000;
-M100,12.3816666667,15.8166666667,Other Names: NGC 4321
-TYPE: Spiral Galaxy
+M100,12.3816666667,+15.8166666666667,Magnitude: 9.3
+Other Names: NGC 4321
+Type: Spiral Galaxy
 Constellation: Coma Berenices
 Viewing Season: Spring
 Viewing Difficulty: Very Hard
 Size: 7x6
 Distance (ly): 60000000;
-M101,14.0533333333,54.35,Other Names: NGC 5457 Pinwheel Galaxy
-TYPE: Spiral Galaxy
+M101,14.0533333333,+54.35,Magnitude: 7.9
+Other Names: NGC 5457 Pinwheel Galaxy
+Type: Spiral Galaxy
 Constellation: Ursa Major
 Viewing Season: Spring
 Viewing Difficulty: Very Hard
 Size: 22
 Distance (ly): 27000000;
-M102,15.1083333333,55.7666666667,Other Names: NGC 5866 Spindle Galaxy
-TYPE: Lenticular (S0) Galaxy
+M102,15.1083333333,+55.7666666666667,Magnitude: 9.9
+Other Names: NGC 5866 Spindle Galaxy
+Type: Lenticular (S0) Galaxy
 Constellation: Draco
 Viewing Season: Summer
 Viewing Difficulty: Hard
 Size: 5.2x2.3
 Distance (ly): 40000000;
-M103,1.5533333333,60.7,Other Names: NGC 581
-TYPE: Open Cluster
+M103,1.5533333333,+60.7,Magnitude: 7.4
+Other Names: NGC 581
+Type: Open Cluster
 Constellation: Cassiopeia
 Viewing Season: Autumn
 Viewing Difficulty: Easy
 Size: 6
 Distance (ly): 8000;
-M104,12.6666666667,-10.3833333333,Other Names: NGC 4594 Sombrero Galaxy
-TYPE: Spiral Galaxy
+M104,12.6666666667,-11.6166666666667,Magnitude: 8
+Other Names: NGC 4594 Sombrero Galaxy
+Type: Spiral Galaxy
 Constellation: Virgo
 Viewing Season: Spring
 Viewing Difficulty: Easy
 Size: 9x4
 Distance (ly): 50000000;
-M105,10.7966666667,12.5833333333,Other Names: NGC 3379
-TYPE: Elliptical Galaxy
+M105,10.7966666667,+12.5833333333333,Magnitude: 9.3
+Other Names: NGC 3379
+Type: Elliptical Galaxy
 Constellation: Leo
 Viewing Season: Spring
 Viewing Difficulty: Moderate
 Size: 2
 Distance (ly): 38000000;
-M106,12.3166666667,47.3,Other Names: NGC 4258
-TYPE: Spiral Galaxy
+M106,12.3166666667,+47.3,Magnitude: 8.4
+Other Names: NGC 4258
+Type: Spiral Galaxy
 Constellation: Canes Venatici
 Viewing Season: Spring
 Viewing Difficulty: Hard
 Size: 19x8
 Distance (ly): 25000000;
-M107,16.5416666667,-12.95,Other Names: NGC 6171
-TYPE: Globular Cluster
+M107,16.5416666667,-13.05,Magnitude: 7.9
+Other Names: NGC 6171
+Type: Globular Cluster
 Constellation: Ophiucus
 Viewing Season: Summer
 Viewing Difficulty: Hard
 Size: 10
 Distance (ly): 19600;
-M108,11.1916666667,55.6666666667,Other Names: NGC 3556
-TYPE: Spiral Galaxy
+M108,11.1916666667,+55.6666666666667,Magnitude: 10
+Other Names: NGC 3556
+Type: Spiral Galaxy
 Constellation: Ursa Major
 Viewing Season: Spring
 Viewing Difficulty: Hard
 Size: 8x1
 Distance (ly): 45000000;
-M109,11.96,53.3833333333,Other Names: NGC 3992
-TYPE: Spiral Galaxy
+M109,11.96,+53.3833333333333,Magnitude: 9.8
+Other Names: NGC 3992
+Type: Spiral Galaxy
 Constellation: Ursa Major
 Viewing Season: Spring
 Viewing Difficulty: Hard
 Size: 7x4
 Distance (ly): 55000000;
-M110,0.6733333333,41.6833333333,Other Names: NGC 205 Satellite of M31
-TYPE: Elliptical Galaxy
+M110,0.6733333333,+41.6833333333333,Magnitude: 8.5
+Other Names: NGC 205 Satellite of M31
+Type: Elliptical Galaxy
 Constellation: Andromeda
 Viewing Season: Autumn
 Viewing Difficulty: Hard

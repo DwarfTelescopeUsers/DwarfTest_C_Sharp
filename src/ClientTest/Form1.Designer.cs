@@ -78,6 +78,7 @@
             WAExposureCB = new ComboBox();
             astroTab = new TabPage();
             objectGB = new GroupBox();
+            gotoButton = new Button();
             ObjectDescriptionRTB = new RichTextBox();
             ObjectLB = new ListBox();
             ObjectTypeCB = new ComboBox();
@@ -100,7 +101,6 @@
             toolStripStatusLabel2 = new ToolStripStatusLabel();
             toolStripSDCardPB = new ToolStripProgressBar();
             StatusBarTimer = new System.Windows.Forms.Timer(components);
-            gotoButton = new Button();
             CamControlGB.SuspendLayout();
             ConfigTab.SuspendLayout();
             siteDetailsGB.SuspendLayout();
@@ -665,6 +665,17 @@
             objectGB.TabStop = false;
             objectGB.Text = "Select Object";
             // 
+            // gotoButton
+            // 
+            gotoButton.Enabled = false;
+            gotoButton.Location = new Point(328, 241);
+            gotoButton.Name = "gotoButton";
+            gotoButton.Size = new Size(75, 23);
+            gotoButton.TabIndex = 4;
+            gotoButton.Text = "Go to";
+            gotoButton.UseVisualStyleBackColor = true;
+            gotoButton.Click += gotoButton_Click;
+            // 
             // ObjectDescriptionRTB
             // 
             ObjectDescriptionRTB.Location = new Point(142, 51);
@@ -863,16 +874,6 @@
             // 
             StatusBarTimer.Interval = 60000;
             StatusBarTimer.Tick += StatusBarTimer_Tick;
-            // 
-            // gotoButton
-            // 
-            gotoButton.Enabled = false;
-            gotoButton.Location = new Point(328, 241);
-            gotoButton.Name = "gotoButton";
-            gotoButton.Size = new Size(75, 23);
-            gotoButton.TabIndex = 4;
-            gotoButton.Text = "Go to";
-            gotoButton.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
