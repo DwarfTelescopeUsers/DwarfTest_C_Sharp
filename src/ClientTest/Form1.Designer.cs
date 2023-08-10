@@ -100,6 +100,7 @@
             toolStripStatusLabel2 = new ToolStripStatusLabel();
             toolStripSDCardPB = new ToolStripProgressBar();
             StatusBarTimer = new System.Windows.Forms.Timer(components);
+            gotoButton = new Button();
             CamControlGB.SuspendLayout();
             ConfigTab.SuspendLayout();
             siteDetailsGB.SuspendLayout();
@@ -653,12 +654,13 @@
             // 
             // objectGB
             // 
+            objectGB.Controls.Add(gotoButton);
             objectGB.Controls.Add(ObjectDescriptionRTB);
             objectGB.Controls.Add(ObjectLB);
             objectGB.Controls.Add(ObjectTypeCB);
             objectGB.Location = new Point(3, 3);
             objectGB.Name = "objectGB";
-            objectGB.Size = new Size(409, 243);
+            objectGB.Size = new Size(409, 270);
             objectGB.TabIndex = 0;
             objectGB.TabStop = false;
             objectGB.Text = "Select Object";
@@ -862,6 +864,16 @@
             StatusBarTimer.Interval = 60000;
             StatusBarTimer.Tick += StatusBarTimer_Tick;
             // 
+            // gotoButton
+            // 
+            gotoButton.Enabled = false;
+            gotoButton.Location = new Point(328, 241);
+            gotoButton.Name = "gotoButton";
+            gotoButton.Size = new Size(75, 23);
+            gotoButton.TabIndex = 4;
+            gotoButton.Text = "Go to";
+            gotoButton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -995,5 +1007,6 @@
         private ComboBox ObjectTypeCB;
         private RichTextBox ObjectDescriptionRTB;
         private ListBox ObjectLB;
+        private Button gotoButton;
     }
 }

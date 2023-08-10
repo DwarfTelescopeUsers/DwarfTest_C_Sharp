@@ -398,6 +398,7 @@ namespace ClientTest
             ObjectLB.Items.Clear();
             _dsoList.Clear();
             ClearRTB(ObjectDescriptionRTB);
+            gotoButton.Enabled = false;
             switch (ObjectTypeCB.SelectedIndex)
             {
                 case 0: // Dwarf 2 planet list
@@ -422,18 +423,23 @@ namespace ClientTest
                         }
                         break;
                     }
-
-
             }
         }
 
         private void ObjectLB_SelectedValueChanged(object sender, EventArgs e)
         {
             ClearRTB(ObjectDescriptionRTB);
-            var selItem = ((ListBox)sender).SelectedItem.ToString();
-            var dso = _dsoList.Where(n => (n.Name.ToString() == selItem));
-            _dso = dso.First();
-            ObjectDescriptionRTB.Text = _dso.Description;
+            if (ObjectTypeCB.SelectedIndex > 0)
+            {
+                var selItem = ((ListBox)sender).SelectedItem.ToString();
+                var dso = _dsoList.Where(n => (n.Name.ToString() == selItem));
+                _dso = dso.First();
+                ObjectDescriptionRTB.Text = _dso.Description;
+            }
+            if (!gotoButton.Enabled)
+            {
+                gotoButton.Enabled = true;
+            }
         }
     }
 }

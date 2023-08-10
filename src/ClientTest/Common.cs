@@ -1,5 +1,4 @@
-﻿using Excel = Microsoft.Office.Interop.Excel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
@@ -8,7 +7,6 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using static ClientTest.ApiCaller;
 using System.CodeDom;
-using Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 using System.Data.Common;
 
