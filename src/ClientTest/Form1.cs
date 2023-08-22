@@ -9,6 +9,8 @@ namespace ClientTest
     {
         private List<DSOData> _dsoList = new List<DSOData>();
         private DSOData _dso = new DSOData();
+        private ConfigData _configData = new ConfigData();
+        private bool _configured;
 
         public Form1()
         {
@@ -21,10 +23,8 @@ namespace ClientTest
 
         private void CheckConfig()
         {
-            bool configured = false;
-            ConfigData cnfigData = new ConfigData();
-            (configured, cnfigData) = Common.CheckConfig();
-            EnableDisableTabs(configured, cnfigData);
+            (_configured, _configData) = Common.CheckConfig();
+            EnableDisableTabs(_configured, _configData);
         }
 
         private void EnableDisableTabs(bool configured, ConfigData cnfigData)
@@ -416,7 +416,8 @@ namespace ClientTest
                     }
                 case 1: // Messier objects from csv file
                     {
-                        _dsoList = ReadDSOData("Messier");
+                        _dsoList = ReadAndSortDSOData("Messier", onlyVisibleCB.Checked, _configData.Latitude, sortByMagCB.Checked);
+
                         foreach (DSOData dso in _dsoList)
                         {
                             ObjectLB.Items.Add(dso.Name);
@@ -425,7 +426,7 @@ namespace ClientTest
                     }
                 case 2: // NGC objects from spreadsheet
                     {
-                        _dsoList = ReadDSOData("NGC");
+                        _dsoList = ReadAndSortDSOData("NGC", onlyVisibleCB.Checked, _configData.Latitude, sortByMagCB.Checked);
                         foreach (DSOData dso in _dsoList)
                         {
                             ObjectLB.Items.Add(dso.Name);
@@ -443,7 +444,7 @@ namespace ClientTest
                 var selItem = ((ListBox)sender).SelectedItem.ToString();
                 var dso = _dsoList.Where(n => (n.Name.ToString() == selItem));
                 _dso = dso.First();
-                ObjectDescriptionRTB.Text = _dso.Description;
+                ObjectDescriptionRTB.Text = $"Magnitude: {_dso.Mag}{Environment.NewLine}{_dso.Description}";
             }
             if (!gotoButton.Enabled)
             {
@@ -451,9 +452,16 @@ namespace ClientTest
             }
         }
 
-        private void gotoButton_Click(object sender, EventArgs e)
+        private async void gotoButton_Click(object sender, EventArgs e)
         {
             // First perform the Correction
+            var response = await Correction(CameraId.Telephoto, _configData.Longitude, _configData.Latitude, DateTime.Now, DateTime.Now);
+            if ((response != null) && (response.Code >= 0))
+            {
+                Console.WriteLine(response.Code);
+            }
+
+
         }
     }
 }

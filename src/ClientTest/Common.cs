@@ -30,6 +30,7 @@ namespace ClientTest
             public string Name { get; set; }
             public double RA { get; set; }
             public double Dec { get; set; }
+            public double Mag { get; set; }
             public string Description { get; set; }
         }
 
@@ -67,11 +68,7 @@ namespace ClientTest
 
             return value;
         }
-       
-        public async static void DoCorrection(ConfigData cnfigData)
-        {
-            var response = await Correction(CameraId.Telephoto, cnfigData.Longitude,cnfigData.Latitude, DateTime.Now,DateTime.Now);
-        }
+
 
         public static double ConvertLatitude(string latString)
         {
@@ -248,10 +245,10 @@ namespace ClientTest
             return dec;
         }
 
-        public static List<DSOData> ReadDSOData(string DSOType)
+        public static List<DSOData> ReadAndSortDSOData(string DSOType, bool onlyVisible, double latitude, bool sortByMagnitude)
         {
             List<DSOData> dsoList = new List<DSOData>();
-            // Check for and load Config Data
+            // Check for and load DSO Data
             if (File.Exists($"{DSOType}.csv"))
             {
                 var allDSOData = File.ReadAllText($"{DSOType}.csv").Trim().Split(";");
@@ -280,13 +277,39 @@ namespace ClientTest
                                 }
                             case 3:
                                 {
+                                    var mag = cmpnts[idx];
+                                    if (!String.IsNullOrEmpty(mag) & mag != "?")
+                                    {
+                                        dso.Mag = Double.Parse(mag);
+                                    }
+                                    else
+                                    {
+                                        dso.Mag = 99.9;
+                                    }
+                                    break;
+                                }
+                            case 4:
+                                {
                                     dso.Description = cmpnts[idx];
                                     break;
                                 }
                         }
                     }
-
-                    dsoList.Add(dso);
+                    if (onlyVisible)
+                    {
+                        if (latitude <= (90 - dso.Dec))
+                        { // Object can be viewed at this latitude
+                            dsoList.Add(dso);
+                        }
+                    }
+                    else
+                    {  // Add all DSOs to list
+                        dsoList.Add(dso);
+                    }
+                    if (sortByMagnitude)
+                    {
+                        dsoList = dsoList.OrderBy(o => o.Mag).ToList();
+                    }
                 }
             }
 

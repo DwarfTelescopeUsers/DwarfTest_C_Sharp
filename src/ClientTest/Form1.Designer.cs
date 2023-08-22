@@ -78,6 +78,7 @@
             WAExposureCB = new ComboBox();
             astroTab = new TabPage();
             objectGB = new GroupBox();
+            onlyVisibleCB = new CheckBox();
             gotoButton = new Button();
             ObjectDescriptionRTB = new RichTextBox();
             ObjectLB = new ListBox();
@@ -101,6 +102,7 @@
             toolStripStatusLabel2 = new ToolStripStatusLabel();
             toolStripSDCardPB = new ToolStripProgressBar();
             StatusBarTimer = new System.Windows.Forms.Timer(components);
+            sortByMagCB = new CheckBox();
             CamControlGB.SuspendLayout();
             ConfigTab.SuspendLayout();
             siteDetailsGB.SuspendLayout();
@@ -654,6 +656,8 @@
             // 
             // objectGB
             // 
+            objectGB.Controls.Add(sortByMagCB);
+            objectGB.Controls.Add(onlyVisibleCB);
             objectGB.Controls.Add(gotoButton);
             objectGB.Controls.Add(ObjectDescriptionRTB);
             objectGB.Controls.Add(ObjectLB);
@@ -664,6 +668,18 @@
             objectGB.TabIndex = 0;
             objectGB.TabStop = false;
             objectGB.Text = "Select Object";
+            // 
+            // onlyVisibleCB
+            // 
+            onlyVisibleCB.AutoSize = true;
+            onlyVisibleCB.Checked = true;
+            onlyVisibleCB.CheckState = CheckState.Checked;
+            onlyVisibleCB.Location = new Point(6, 244);
+            onlyVisibleCB.Name = "onlyVisibleCB";
+            onlyVisibleCB.Size = new Size(109, 19);
+            onlyVisibleCB.TabIndex = 5;
+            onlyVisibleCB.Text = "List Only Visible";
+            onlyVisibleCB.UseVisualStyleBackColor = true;
             // 
             // gotoButton
             // 
@@ -875,6 +891,16 @@
             StatusBarTimer.Interval = 60000;
             StatusBarTimer.Tick += StatusBarTimer_Tick;
             // 
+            // sortByMagCB
+            // 
+            sortByMagCB.AutoSize = true;
+            sortByMagCB.Location = new Point(121, 244);
+            sortByMagCB.Name = "sortByMagCB";
+            sortByMagCB.Size = new Size(124, 19);
+            sortByMagCB.TabIndex = 6;
+            sortByMagCB.Text = "Sort By Magnitude";
+            sortByMagCB.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -890,7 +916,7 @@
             Controls.Add(BtnRotateStop);
             Controls.Add(BtnRotateAnti);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Dwarf2";
             CamControlGB.ResumeLayout(false);
             ConfigTab.ResumeLayout(false);
             siteDetailsGB.ResumeLayout(false);
@@ -927,6 +953,7 @@
             WAExposureGB.ResumeLayout(false);
             astroTab.ResumeLayout(false);
             objectGB.ResumeLayout(false);
+            objectGB.PerformLayout();
             tabPage1.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)vlcControl).EndInit();
@@ -1009,5 +1036,7 @@
         private RichTextBox ObjectDescriptionRTB;
         private ListBox ObjectLB;
         private Button gotoButton;
+        private CheckBox onlyVisibleCB;
+        private CheckBox sortByMagCB;
     }
 }
