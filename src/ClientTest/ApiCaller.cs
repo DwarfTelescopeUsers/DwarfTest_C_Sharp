@@ -45,6 +45,12 @@ namespace ClientTest
             AreaFocus = 1
         }
 
+        public enum FocusDirection
+        {
+            Plus = 0,
+            Minus = 1
+        }
+
         public enum WhiteBalanceScene
         {
             IncandescentLamp = 0,
@@ -1016,6 +1022,56 @@ Note:
             D2Message? response = await SendMessage(d2Message);
             return response;
         }
+
+        public static async Task<D2Message?> ManualFocusStep(FocusDirection direction)
+        {
+            D2Message d2Message = new()
+            {
+                Interface = 10100,
+                Id = (int)3,
+                Mode = 2,
+                MStep = 1,
+                Speed = 305,
+                Direction = (int)direction,
+                Pulse = 1,
+                AccelStep = 0
+            };
+
+            D2Message? response = await SendMessage(d2Message);
+            return response;
+        }
+
+        public static async Task<D2Message?> ManualFocusContinuous(FocusDirection direction)
+        {
+            D2Message d2Message = new()
+            {
+                Interface = 10100,
+                Id = (int)3,
+                Mode = 1,
+                MStep = 8,
+                Speed = 400,
+                Direction = (int)direction,
+                Pulse = 1,
+                AccelStep = 0
+            };
+
+            D2Message? response = await SendMessage(d2Message);
+            return response;
+        }
+
+        public static async Task<D2Message?> ManualFocusStop()
+        {
+            D2Message d2Message = new()
+            {
+                Interface = 10101,
+                Id = (int)3,
+                DecelStep = 0
+            };
+
+            D2Message? response = await SendMessage(d2Message);
+            return response;
+        }
+
 
         public static async Task<D2Message?> RotateMotor(MotorId id, MotorDirection drn)
         {

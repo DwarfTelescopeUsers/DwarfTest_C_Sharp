@@ -9,6 +9,7 @@ using static ClientTest.ApiCaller;
 using System.CodeDom;
 using System.Runtime.InteropServices;
 using System.Data.Common;
+using System.Security.Cryptography;
 
 namespace ClientTest
 {
@@ -27,6 +28,7 @@ namespace ClientTest
 
         public struct DSOData
         {
+            public int Index { get; set; }
             public string Name { get; set; }
             public double RA { get; set; }
             public double Dec { get; set; }
@@ -245,72 +247,101 @@ namespace ClientTest
             return dec;
         }
 
-        public static List<DSOData> ReadAndSortDSOData(string DSOType, bool onlyVisible, double latitude, bool sortByMagnitude)
+        public static List<DSOData> SortList(List<DSOData> dsoList, bool sortByMagnitude)
+        {
+            List<DSOData> _dsoList = new List<DSOData>();
+            if (sortByMagnitude)
+            {
+                _dsoList = dsoList.OrderBy(o => o.Mag).ToList();
+
+            }
+            else
+            {
+                _dsoList = dsoList.OrderBy(o => o.Index).ToList();
+            }
+            return _dsoList;
+        }
+
+        public static List<DSOData> ListOnlyVisible(List<DSOData> dsoList,double latitude, bool onlyVisible)
+        {
+            List<DSOData> _dsoList = new List<DSOData>();
+            if (onlyVisible)
+            {
+                foreach (var dso in dsoList)
+                {
+                    if (latitude <= (90 - dso.Dec))
+                    { // Object can be viewed at this latitude
+                        _dsoList.Add(dso);
+                    }
+                }
+            }
+            else
+            {
+                _dsoList = dsoList;
+            }
+            return _dsoList;
+        }
+
+            public static List<DSOData> ReadAndSortDSOData(string DSOType, bool onlyVisible, double latitude, bool sortByMagnitude)
         {
             List<DSOData> dsoList = new List<DSOData>();
             // Check for and load DSO Data
             if (File.Exists($"{DSOType}.csv"))
             {
                 var allDSOData = File.ReadAllText($"{DSOType}.csv").Trim().Split(";");
+                var index = 0;
                 foreach (var entry in allDSOData)
                 {
                     var cmpnts = entry.Split(",");
                     DSOData dso = new DSOData();
+                    dso.Index = index++;
                     for (var idx = 0; idx < cmpnts.Length; idx++)
                     {
-                        switch (idx)
+                        if (!String.IsNullOrEmpty(cmpnts[idx]))
                         {
-                            case 0:
-                                {
-                                    dso.Name = cmpnts[idx].Trim();
-                                    break;
-                                }
-                            case 1:
-                                {
-                                    dso.RA = Double.Parse(cmpnts[idx]);
-                                    break;
-                                }
-                            case 2:
-                                {
-                                    dso.Dec = Double.Parse(cmpnts[idx]);
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    var mag = cmpnts[idx];
-                                    if (!String.IsNullOrEmpty(mag) & mag != "?")
+                            switch (idx)
+                            {
+                                case 0:
                                     {
-                                        dso.Mag = Double.Parse(mag);
+                                        dso.Name = cmpnts[idx].Trim();
+                                        break;
                                     }
-                                    else
+                                case 1:
                                     {
-                                        dso.Mag = 99.9;
+                                        dso.RA = Double.Parse(cmpnts[idx]);
+                                        break;
                                     }
-                                    break;
-                                }
-                            case 4:
-                                {
-                                    dso.Description = cmpnts[idx];
-                                    break;
-                                }
+                                case 2:
+                                    {
+                                        dso.Dec = Double.Parse(cmpnts[idx]);
+                                        break;
+                                    }
+                                case 3:
+                                    {
+                                        var mag = cmpnts[idx];
+                                        if (!String.IsNullOrEmpty(mag) & mag != "?")
+                                        {
+                                            dso.Mag = Double.Parse(mag);
+                                        }
+                                        else
+                                        {
+                                            dso.Mag = 99.9;
+                                        }
+                                        break;
+                                    }
+                                case 4:
+                                    {
+                                        dso.Description = cmpnts[idx];
+                                        break;
+                                    }
+                            }
                         }
                     }
-                    if (onlyVisible)
-                    {
-                        if (latitude <= (90 - dso.Dec))
-                        { // Object can be viewed at this latitude
-                            dsoList.Add(dso);
-                        }
-                    }
-                    else
-                    {  // Add all DSOs to list
-                        dsoList.Add(dso);
-                    }
-                    if (sortByMagnitude)
-                    {
-                        dsoList = dsoList.OrderBy(o => o.Mag).ToList();
-                    }
+                    dsoList.Add(dso);
                 }
+                dsoList = ListOnlyVisible(dsoList, latitude, onlyVisible);
+                dsoList = SortList(dsoList, sortByMagnitude);
+                
             }
 
             return dsoList;

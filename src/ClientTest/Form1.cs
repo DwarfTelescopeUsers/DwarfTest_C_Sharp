@@ -463,5 +463,32 @@ namespace ClientTest
 
 
         }
+
+        private void sortByMagCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_dsoList != null)
+            {
+                ObjectLB.Items.Clear();
+                _dsoList = SortList(_dsoList, sortByMagCB.Checked);
+                foreach (DSOData dso in _dsoList)
+                {
+                    ObjectLB.Items.Add(dso.Name);
+                }
+            }
+        }
+
+        private void onlyVisibleCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_dsoList != null)
+            {
+                ObjectLB.Items.Clear();
+                _dsoList = ListOnlyVisible(_dsoList, _configData.Latitude, onlyVisibleCB.Checked);
+                foreach (DSOData dso in _dsoList)
+                {
+                    ObjectLB.Items.Add(dso.Name);
+                }
+            }
+
+        }
     }
 }

@@ -78,6 +78,7 @@
             WAExposureCB = new ComboBox();
             astroTab = new TabPage();
             objectGB = new GroupBox();
+            sortByMagCB = new CheckBox();
             onlyVisibleCB = new CheckBox();
             gotoButton = new Button();
             ObjectDescriptionRTB = new RichTextBox();
@@ -102,7 +103,6 @@
             toolStripStatusLabel2 = new ToolStripStatusLabel();
             toolStripSDCardPB = new ToolStripProgressBar();
             StatusBarTimer = new System.Windows.Forms.Timer(components);
-            sortByMagCB = new CheckBox();
             CamControlGB.SuspendLayout();
             ConfigTab.SuspendLayout();
             siteDetailsGB.SuspendLayout();
@@ -669,6 +669,17 @@
             objectGB.TabStop = false;
             objectGB.Text = "Select Object";
             // 
+            // sortByMagCB
+            // 
+            sortByMagCB.AutoSize = true;
+            sortByMagCB.Location = new Point(121, 244);
+            sortByMagCB.Name = "sortByMagCB";
+            sortByMagCB.Size = new Size(124, 19);
+            sortByMagCB.TabIndex = 6;
+            sortByMagCB.Text = "Sort By Magnitude";
+            sortByMagCB.UseVisualStyleBackColor = true;
+            sortByMagCB.CheckedChanged += sortByMagCB_CheckedChanged;
+            // 
             // onlyVisibleCB
             // 
             onlyVisibleCB.AutoSize = true;
@@ -680,6 +691,7 @@
             onlyVisibleCB.TabIndex = 5;
             onlyVisibleCB.Text = "List Only Visible";
             onlyVisibleCB.UseVisualStyleBackColor = true;
+            onlyVisibleCB.CheckedChanged += onlyVisibleCB_CheckedChanged;
             // 
             // gotoButton
             // 
@@ -890,16 +902,6 @@
             // 
             StatusBarTimer.Interval = 60000;
             StatusBarTimer.Tick += StatusBarTimer_Tick;
-            // 
-            // sortByMagCB
-            // 
-            sortByMagCB.AutoSize = true;
-            sortByMagCB.Location = new Point(121, 244);
-            sortByMagCB.Name = "sortByMagCB";
-            sortByMagCB.Size = new Size(124, 19);
-            sortByMagCB.TabIndex = 6;
-            sortByMagCB.Text = "Sort By Magnitude";
-            sortByMagCB.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
